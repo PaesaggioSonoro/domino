@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 
 typedef struct {
@@ -68,6 +70,8 @@ void ruotaTesseraSeNecessario(Tessera *tessera, int latoDisponibile) {
         tessera->lato2 = temp;
     }
 }
+void aggiungiTesseraPiano(Tessera *piano, int *lunghezzaPiano, Tessera tessera, int latoAggiunta, int *latoDisponibileSinistra, int *latoDisponibileDestra);
+int ciSonoTessereGiocabili(Tessera *tessere, int n, int latoDisponibileSinistra, int latoDisponibileDestra);
 
 void giocaDomino(Tessera *tessere, int n) {
     int punteggio = 0, scelta, latoAggiunta;
@@ -93,8 +97,6 @@ while (1) {
         if (scelta == -2) break; // Termina il gioco
 
        
-
-
         Tessera tesseraScelta = tessere[scelta];
         tessere[scelta].utilizzata = 1;
 
@@ -193,6 +195,8 @@ int ciSonoTessereGiocabili(Tessera *tessere, int n, int latoDisponibileSinistra,
 }
 
 int main() {
+    srand(time(NULL)); // Inizializza il generatore di numeri casuali una volta
+
     Tessera setTessere[28];
     int setSize;
     generaSetTessere(setTessere, &setSize);
