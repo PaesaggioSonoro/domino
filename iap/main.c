@@ -15,6 +15,7 @@ void stampaTessera(Tessera t) {
 }
 
 void stampaMano(Tessera *tessere, int n) {
+    printf("\n");
     printf("Le tue tessere:\n");
     for (int i = 0; i < n; i++) {
         if (!tessere[i].utilizzata) {
@@ -47,6 +48,16 @@ int scegliTessera(Tessera *tessere, int n, int latoDisponibileSinistra, int lato
         return -1;
     }
 
+    // Verifica se la tessera scelta è la tessera speciale [0|0]
+    if (tessere[scelta].lato1 == 0 && tessere[scelta].lato2 == 0) {
+        return scelta; // La tessera speciale è sempre valida
+    }
+
+    // Permetti la scelta di qualsiasi tessera se uno dei lati disponibili è -1 (tessera speciale in gioco)
+    if (latoDisponibileSinistra == -1 || latoDisponibileDestra == -1) {
+        return scelta;
+    }
+
     // Verifica la validità della tessera in base alla direzione di aggiunta
     if (direzione == 0 && latoDisponibileSinistra != -1 &&
         tessere[scelta].lato1 != latoDisponibileSinistra && tessere[scelta].lato2 != latoDisponibileSinistra) {
@@ -62,6 +73,8 @@ int scegliTessera(Tessera *tessere, int n, int latoDisponibileSinistra, int lato
 
     return scelta;
 }
+
+
 
 void ruotaTesseraSeNecessario(Tessera *tessera, int latoDisponibile) {
     if (latoDisponibile != -1 && tessera->lato1 != latoDisponibile && tessera->lato2 == latoDisponibile) {
@@ -79,7 +92,7 @@ void giocaDomino(Tessera *tessere, int n) {
     Tessera pianoDiGioco[100];
     int lunghezzaPiano = 0;
 
-while (1) {
+    while (1) {
         stampaMano(tessere, n);
 
         // Controllo se è la prima tessera da posizionare
@@ -96,7 +109,6 @@ while (1) {
         if (scelta == -1) continue; // Scelta non valida, riprova
         if (scelta == -2) break; // Termina il gioco
 
-       
         Tessera tesseraScelta = tessere[scelta];
         tessere[scelta].utilizzata = 1;
 
@@ -111,7 +123,9 @@ while (1) {
         stampaPianoDiGioco(pianoDiGioco, lunghezzaPiano);
         printf("Punteggio corrente: %d\n", punteggio);
 
-         if (!ciSonoTessereGiocabili(tessere, n, latoDisponibileSinistra, latoDisponibileDestra)) {
+        // Controlla se il gioco è finito solo se la tessera giocata non è [0|0]
+        if (!(tesseraScelta.lato1 == 0 && tesseraScelta.lato2 == 0) &&
+            !ciSonoTessereGiocabili(tessere, n, latoDisponibileSinistra, latoDisponibileDestra)) {
             printf("Gioco finito: nessuna tessera giocabile.\n");
             break; // Termina il gioco
         }
@@ -120,8 +134,15 @@ while (1) {
     printf("\nPunteggio finale: %d\n", punteggio);
 }
 
+
 void generaSetTessere(Tessera *set, int *size) {
     int k = 0;
+    // Aggiungi la tessera speciale [0|0]
+    set[k].lato1 = 0;
+    set[k].lato2 = 0;
+    set[k].utilizzata = 0;
+    k++;
+
     for (int i = 1; i <= 6; i++) {
         for (int j = i; j <= 6; j++) {
             set[k].lato1 = i;
@@ -132,6 +153,7 @@ void generaSetTessere(Tessera *set, int *size) {
     }
     *size = k;
 }
+
 
 void assegnaTessereGiocatore(Tessera *giocatore, int nGiocatore, Tessera *set, int setSize) {
     srand(time(NULL)); // Inizializza il generatore di numeri casuali
@@ -149,32 +171,40 @@ int generaNumeroCasuale(int N) {
 
 void aggiungiTesseraPiano(Tessera *piano, int *lunghezzaPiano, Tessera tessera, int latoAggiunta, int *latoDisponibileSinistra, int *latoDisponibileDestra) {
     if (latoAggiunta == 0) { // Aggiunta a sinistra
-        if (*latoDisponibileSinistra != -1 && tessera.lato2 != *latoDisponibileSinistra) {
-            // Bisogna girare la tessera
-            int temp = tessera.lato1;
-            tessera.lato1 = tessera.lato2;
-            tessera.lato2 = temp;
+        if (tessera.lato1 == 0 && tessera.lato2 == 0) {
+            *latoDisponibileSinistra = -1;
+        } else {
+            if (*latoDisponibileSinistra != -1 && tessera.lato2 != *latoDisponibileSinistra) {
+                // Bisogna girare la tessera
+                int temp = tessera.lato1;
+                tessera.lato1 = tessera.lato2;
+                tessera.lato2 = temp;
+            }
+            *latoDisponibileSinistra = tessera.lato1;
         }
-        *latoDisponibileSinistra = tessera.lato1;
 
         for (int i = *lunghezzaPiano; i > 0; i--) {
             piano[i] = piano[i - 1];
         }
         piano[0] = tessera;
-        if (*lunghezzaPiano == 0) { // Se il piano di gioco era vuoto
+        if (*lunghezzaPiano == 0 && (tessera.lato1 != 0 || tessera.lato2 != 0)) { // Se il piano di gioco era vuoto e non è la tessera speciale
             *latoDisponibileDestra = tessera.lato2;
         }
     } else { // Aggiunta a destra
-        if (*latoDisponibileDestra != -1 && tessera.lato1 != *latoDisponibileDestra) {
-            // Bisogna girare la tessera
-            int temp = tessera.lato1;
-            tessera.lato1 = tessera.lato2;
-            tessera.lato2 = temp;
+        if (tessera.lato1 == 0 && tessera.lato2 == 0) {
+            *latoDisponibileDestra = -1;
+        } else {
+            if (*latoDisponibileDestra != -1 && tessera.lato1 != *latoDisponibileDestra) {
+                // Bisogna girare la tessera
+                int temp = tessera.lato1;
+                tessera.lato1 = tessera.lato2;
+                tessera.lato2 = temp;
+            }
+            *latoDisponibileDestra = tessera.lato2;
         }
-        *latoDisponibileDestra = tessera.lato2;
 
         piano[*lunghezzaPiano] = tessera;
-        if (*lunghezzaPiano == 0) { // Se il piano di gioco era vuoto
+        if (*lunghezzaPiano == 0 && (tessera.lato1 != 0 || tessera.lato2 != 0)) { // Se il piano di gioco era vuoto e non è la tessera speciale
             *latoDisponibileSinistra = tessera.lato1;
         }
     }
@@ -182,16 +212,26 @@ void aggiungiTesseraPiano(Tessera *piano, int *lunghezzaPiano, Tessera tessera, 
 }
 
 int ciSonoTessereGiocabili(Tessera *tessere, int n, int latoDisponibileSinistra, int latoDisponibileDestra) {
+    int tessereGiocabili = 0;
+    int hasDoubleZero = 0;
+
     for (int i = 0; i < n; i++) {
-        if (!tessere[i].utilizzata &&
-            (tessere[i].lato1 == latoDisponibileSinistra ||
-             tessere[i].lato2 == latoDisponibileSinistra ||
-             tessere[i].lato1 == latoDisponibileDestra ||
-             tessere[i].lato2 == latoDisponibileDestra)) {
-            return 1; // Ci sono ancora tessere giocabili
+        if (!tessere[i].utilizzata) {
+            if (tessere[i].lato1 == latoDisponibileSinistra || tessere[i].lato2 == latoDisponibileSinistra ||
+                tessere[i].lato1 == latoDisponibileDestra || tessere[i].lato2 == latoDisponibileDestra) {
+                tessereGiocabili++;
+            }
+            if (tessere[i].lato1 == 0 && tessere[i].lato2 == 0) {
+                hasDoubleZero = 1;
+            }
         }
     }
-    return 0; // Nessuna tessera giocabile
+
+    if (hasDoubleZero) {
+        return 1; // Se c'è [0|0], ci sono tessere giocabili
+    }
+
+    return tessereGiocabili > 0; // Altrimenti, controlla le altre tessere giocabili
 }
 
 int main() {
@@ -201,7 +241,7 @@ int main() {
     int setSize;
     generaSetTessere(setTessere, &setSize);
 
-    int nGiocatore = generaNumeroCasuale(10); // Numero di tessere per il giocatore
+    int nGiocatore = generaNumeroCasuale(6); // Numero di tessere per il giocatore
    
     Tessera tessereGiocatore[nGiocatore];
     assegnaTessereGiocatore(tessereGiocatore, nGiocatore, setTessere, setSize);
