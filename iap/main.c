@@ -122,8 +122,7 @@ while (1) {
 
 void generaSetTessere(Tessera *set, int *size) {
     int k = 0;
-
-    for (int i = 0; i <= 6; i++) {
+    for (int i = 1; i <= 6; i++) {
         for (int j = i; j <= 6; j++) {
             set[k].lato1 = i;
             set[k].lato2 = j;
@@ -131,10 +130,8 @@ void generaSetTessere(Tessera *set, int *size) {
             k++;
         }
     }
-
     *size = k;
 }
-
 
 void assegnaTessereGiocatore(Tessera *giocatore, int nGiocatore, Tessera *set, int setSize) {
     srand(time(NULL)); // Inizializza il generatore di numeri casuali
@@ -204,7 +201,7 @@ int main() {
     int setSize;
     generaSetTessere(setTessere, &setSize);
 
-    int nGiocatore = generaNumeroCasuale(7); // Numero di tessere per il giocatore
+    int nGiocatore = generaNumeroCasuale(10); // Numero di tessere per il giocatore
    
     Tessera tessereGiocatore[nGiocatore];
     assegnaTessereGiocatore(tessereGiocatore, nGiocatore, setTessere, setSize);
