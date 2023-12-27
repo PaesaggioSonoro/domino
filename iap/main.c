@@ -161,6 +161,19 @@ void giocaDomino(Tessera *tessere, int n) {
         stampaMano(tessere, n);
         stampaPianoDiGioco(pianoDiGioco, lunghezzaPiano);
 
+        // Controlla se tutte le tessere del giocatore sono state utilizzate
+        int tessereRimanenti = 0;
+        for (int i = 0; i < n; i++) {
+            if (!tessere[i].utilizzata) {
+                tessereRimanenti++;
+            }
+        }
+
+        if (tessereRimanenti == 0) {
+            printf("Hai terminato tutte le tue tessere! Gioco terminato.\n");
+            break;
+        }
+
         if (lunghezzaPiano > 0 && !ciSonoTessereGiocabili(tessere, n, latoDisponibileSinistra, latoDisponibileDestra, lunghezzaPiano, pianoDiGioco)) {
             printf("Non ci sono più mosse disponibili. Gioco terminato.\n");
             break;
@@ -183,7 +196,6 @@ void giocaDomino(Tessera *tessere, int n) {
         tessere[scelta].utilizzata = 1;
 
         int ruotaTessera = 0;
-        
         if (lunghezzaPiano == 0 || (latoAggiunta == 0 && pianoDiGioco[0].lato1 == 0) || (latoAggiunta == 1 && pianoDiGioco[lunghezzaPiano - 1].lato2 == 0)) {
             ruotaTessera = chiediRuotaTessera();
         }
@@ -194,7 +206,6 @@ void giocaDomino(Tessera *tessere, int n) {
 
         punteggio += tesseraScelta.lato1 + tesseraScelta.lato2;
 
-        int tesseraSpecialeNelPiano = (lunghezzaPiano > 0 && (pianoDiGioco[0].lato1 == 0 || pianoDiGioco[lunghezzaPiano - 1].lato2 == 0));
         aggiungiTesseraPiano(pianoDiGioco, &lunghezzaPiano, tesseraScelta, latoAggiunta, &latoDisponibileSinistra, &latoDisponibileDestra, ruotaTessera);
 
         printf("Punteggio corrente: %d\n", punteggio);
@@ -202,6 +213,7 @@ void giocaDomino(Tessera *tessere, int n) {
 
     printf("\nPunteggio finale: %d\n", punteggio);
 }
+
 
 void generaSetTessere(Tessera *set, int *size) {
     int k = 0;
