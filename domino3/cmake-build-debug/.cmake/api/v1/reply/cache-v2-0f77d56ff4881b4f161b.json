@@ -555,7 +555,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/JetBrains/CLion 2023.3.2/bin/ninja/win/x64/ninja.exe"
+			"value" : "C:/PROGRA~1/JETBRA~1/CLION2~1.2/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1198,6 +1198,78 @@
 			"value" : "D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a"
 		},
 		{
+			"name" : "SDL2TTFDIR_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SDL2TTFDIR."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SDL2TTFDIR_DIR-NOTFOUND"
+		},
+		{
+			"name" : "SDL2TTFMAIN_LIBRARY",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "SDL2TTFMAIN_LIBRARY-NOTFOUND"
+		},
+		{
+			"name" : "SDL2TTF_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SDL2TTF."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SDL2TTF_DIR-NOTFOUND"
+		},
+		{
+			"name" : "SDL2TTF_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SDL2TTF_INCLUDE_DIR-NOTFOUND"
+		},
+		{
+			"name" : "SDL2TTF_INCLUDE_DIR_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SDL2TTF_INCLUDE_DIR."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SDL2TTF_INCLUDE_DIR_DIR-NOTFOUND"
+		},
+		{
+			"name" : "SDL2TTF_LIBRARY_TEMP",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "SDL2TTF_LIBRARY_TEMP-NOTFOUND"
+		},
+		{
 			"name" : "SDL2_IMAGE_INCLUDE_DIR",
 			"properties" : 
 			[
@@ -1263,7 +1335,19 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a"
+			"value" : "mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;mingw32;-mwindows;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a;D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a"
+		},
+		{
+			"name" : "SDL2_ttf_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SDL2_ttf."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SDL2_ttf_DIR-NOTFOUND"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

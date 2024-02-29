@@ -29,19 +29,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 14,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 18,
+				"line" : 20,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 12,
+				"line" : 18,
 				"parent" : 0
 			}
 		]
@@ -64,6 +64,10 @@
 				{
 					"backtrace" : 3,
 					"path" : "D:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "D:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include"
 				}
 			],
 			"language" : "C",
@@ -118,6 +122,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "D:\\UNI\\IAP\\domino2\\domino3\\SDL2_image\\x86_64-w64-mingw32\\lib\\libSDL2_image.dll.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "D:\\UNI\\IAP\\domino2\\domino3\\SDL2_ttf\\x86_64-w64-mingw32\\lib\\libSDL2_ttf.dll.a",
 				"role" : "libraries"
 			},
 			{
