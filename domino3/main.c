@@ -1,17 +1,37 @@
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_timer.h>
-#include <stdio.h>
-#include "game.h"
+#include "main.h"
+extern void init(char *);
+extern void cleanup(void);
+extern TTF_Font *loadFont(char *, int);
+extern void delay(unsigned int);
+extern void getInput(void);
+
+
 
 int main(int argc, char *argv[])
 {
+    unsigned int frameLimit = SDL_GetTicks() + 16;
+    int go;
 
-    // returns zero on success else non-zero
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        printf("error initializing SDL: %s\n", SDL_GetError());
+    init("Domino");
+
+
+    atexit(cleanup);
+
+
+    go = 1;
+
+    // load things
+
+
+    game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/FreeSans.ttf", 16);
+
+    while (1){
+        getInput();
+
+
+        delay(frameLimit);
+
+        frameLimit = SDL_GetTicks() + 16;
     }
-    GameLoop();
 
-    return 0;
 }

@@ -51,14 +51,35 @@ build cmake_object_order_depends_target_domino3: phony || CMakeFiles/domino3.dir
 
 build CMakeFiles/domino3.dir/main.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/main.c || cmake_object_order_depends_target_domino3
   DEP_FILE = CMakeFiles\domino3.dir\main.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
   INCLUDES = -ID:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include
   OBJECT_DIR = CMakeFiles\domino3.dir
   OBJECT_FILE_DIR = CMakeFiles\domino3.dir
 
-build CMakeFiles/domino3.dir/game.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/game.c || cmake_object_order_depends_target_domino3
-  DEP_FILE = CMakeFiles\domino3.dir\game.c.obj.d
-  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+build CMakeFiles/domino3.dir/font.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/font.c || cmake_object_order_depends_target_domino3
+  DEP_FILE = CMakeFiles\domino3.dir\font.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  INCLUDES = -ID:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include
+  OBJECT_DIR = CMakeFiles\domino3.dir
+  OBJECT_FILE_DIR = CMakeFiles\domino3.dir
+
+build CMakeFiles/domino3.dir/init.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/init.c || cmake_object_order_depends_target_domino3
+  DEP_FILE = CMakeFiles\domino3.dir\init.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  INCLUDES = -ID:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include
+  OBJECT_DIR = CMakeFiles\domino3.dir
+  OBJECT_FILE_DIR = CMakeFiles\domino3.dir
+
+build CMakeFiles/domino3.dir/draw.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/draw.c || cmake_object_order_depends_target_domino3
+  DEP_FILE = CMakeFiles\domino3.dir\draw.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
+  INCLUDES = -ID:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include
+  OBJECT_DIR = CMakeFiles\domino3.dir
+  OBJECT_FILE_DIR = CMakeFiles\domino3.dir
+
+build CMakeFiles/domino3.dir/input.c.obj: C_COMPILER__domino3_unscanned_Debug D$:/UNI/IAP/domino2/domino3/input.c || cmake_object_order_depends_target_domino3
+  DEP_FILE = CMakeFiles\domino3.dir\input.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always
   INCLUDES = -ID:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/include/SDL2 -ID:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/include
   OBJECT_DIR = CMakeFiles\domino3.dir
   OBJECT_FILE_DIR = CMakeFiles\domino3.dir
@@ -71,7 +92,7 @@ build CMakeFiles/domino3.dir/game.c.obj: C_COMPILER__domino3_unscanned_Debug D$:
 #############################################
 # Link the executable domino3.exe
 
-build domino3.exe: C_EXECUTABLE_LINKER__domino3_Debug CMakeFiles/domino3.dir/main.c.obj CMakeFiles/domino3.dir/game.c.obj | D$:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a D$:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a D$:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/lib/libSDL2_image.dll.a D$:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/lib/libSDL2_ttf.dll.a
+build domino3.exe: C_EXECUTABLE_LINKER__domino3_Debug CMakeFiles/domino3.dir/main.c.obj CMakeFiles/domino3.dir/font.c.obj CMakeFiles/domino3.dir/init.c.obj CMakeFiles/domino3.dir/draw.c.obj CMakeFiles/domino3.dir/input.c.obj | D$:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a D$:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a D$:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/lib/libSDL2_image.dll.a D$:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/lib/libSDL2_ttf.dll.a
   FLAGS = -g
   LINK_LIBRARIES = -lmingw32  -mwindows  D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2main.a  D:/UNI/IAP/domino2/domino3/SDL2/x86_64-w64-mingw32/lib/libSDL2.dll.a  D:/UNI/IAP/domino2/domino3/SDL2_image/x86_64-w64-mingw32/lib/libSDL2_image.dll.a  D:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/lib/libSDL2_ttf.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\domino3.dir
