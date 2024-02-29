@@ -12,7 +12,7 @@ void GameLoop(){
     SDL_Window* win = SDL_CreateWindow("GAME", // creates a window
                                        SDL_WINDOWPOS_CENTERED,
                                        SDL_WINDOWPOS_CENTERED,
-                                       1000, 1000, 0);
+                                       1500, 1000, 0);
 
     // triggers the program that controls
     // your graphics hardware and sets flags

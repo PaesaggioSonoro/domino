@@ -1,6 +1,0 @@
-# ninja log v5
-1	328	7309079289610229	CMakeFiles/domino3.dir/main.c.obj	bc83756fea0ea592
-330	395	7304011357557892	domino3.exe	8b4b4e5b393721c1
-3	337	7309079289700229	CMakeFiles/domino3.dir/game.c.obj	238f7a637815b8be
-2	317	7309079931070219	CMakeFiles/domino3.dir/main.c.obj	bc83756fea0ea592
-318	377	7309079931650222	domino3.exe	da81b720ab262c1e

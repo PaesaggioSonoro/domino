@@ -16,3 +16,5 @@ enum GameStatus {
     INITIALIZE,
     RUNNING
 };
+
+void GameLoop();
