@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     SDL_Surface* surface;
 
     // please provide a path for your image
-    surface = IMG_Load("path");
+    surface = IMG_Load("C:\\Users\\franc\\Downloads\\cacca.png");
 
     // loads image to our graphics hardware memory.
     SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surface);
