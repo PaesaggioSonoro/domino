@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
 
 
     game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/FreeSans.ttf", 16);
-
+    game.tessera1 = 1;
+    game.tessera2 = 1;
 
     while (1){
         getInput();

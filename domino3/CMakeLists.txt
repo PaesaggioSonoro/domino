@@ -29,5 +29,7 @@ add_executable(domino3 main.c
         input.c
         input.h
         tessera.c
-        tessera.h)
+        tessera.h
+        drawing_utils.c
+)
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARY})
