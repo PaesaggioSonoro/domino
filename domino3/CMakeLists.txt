@@ -1,35 +1,84 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.21)
+
 project(domino3 C)
 
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake_modules)
+# SETUP VARIABLES:
 
-set(SDL2_PATH "SDL2/x86_64-w64-mingw32")
-set(SDL2_DIR "SDL2_image/x86_64-w64-mingw32")
-set(SDL2_TTF_DIR "SDL2_ttf/x86_64-w64-mingw32")
+# list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/modules)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_INCLUDE_PATH ${PROJECT_SOURCE_DIR}/include)
+set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
 
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
 
-# Manually specify SDL2_ttf library and include directories
-set(SDL2_TTF_LIBRARY "D:/UNI/IAP/domino2/domino3/SDL2_ttf/x86_64-w64-mingw32/lib/libSDL2_ttf.dll.a")
-set(SDL2_TTF_INCLUDE_DIRS "${SDL2_TTF_DIR}/include")
+# SETUP SDL2
 
-include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
-add_executable(domino3 main.c
-        font.h
-        font.c
-        main.h
-        structs.h
-        defs.h
-        init.c
-        init.h
-        draw.c
-        draw.h
-        input.c
-        input.h
-        tessera.c
-        tessera.h
-        drawing_utils.c
+# find_package(SDL2 REQUIRED)   # <<< probably best practice.
+                                # But lets do it manually for now.
+                                #   The downside is that if the development environment
+                                #   differ from others (which they tend to do).
+                                #   Therefore each developer must change the SDL2 paths to their SDL2 folder.
+                                #   ...and libs is probably not compatible with all compilers.
+
+# NOTE: Folders here contain both SDL2 and SDL2_image files.
+set(SDL2_LIB_DIR C:/SDL/SDL2_all/lib)
+set(SDL2_INCLUDE_DIR C:/SDL/SDL2_all/include)
+set(SDL2_LIBRARY C:/SDL/SDL2_all/bin)
+
+# SETUP INCLUDE AND LINK DIRS:
+
+
+include_directories(
+    ${SDL2_INCLUDE_DIR}
+    ${PROJECT_SOURCE_DIR}/include
 )
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARY})
+
+link_directories(
+    ${SDL2_LIB_DIR}
+)
+
+
+# INCLUDE FILES THAT SHOULD BE COMPILED:
+
+file(GLOB_RECURSE SRC "src/*.c" "src/*.h")
+
+message(STATUS "Add source files:")
+foreach(SRC_FILE IN LISTS SRC)
+    message(STATUS "${SRC_FILE}")
+endforeach()
+message(STATUS "")
+
+add_executable(${PROJECT_NAME} ${SRC})
+
+
+# LINK PROGRAM
+
+target_link_libraries(
+    ${PROJECT_NAME}
+        mingw32
+        SDL2main
+        SDL2
+        SDL2_image
+        SDL2_ttf
+)
+
+
+# COPY OVER STATIC FILES
+
+message(STATUS "Copying all assets to destination folder...")
+file(
+    COPY assets
+    DESTINATION ${OUTPUT_DIR}
+)
+
+message(STATUS "Copying all dependencies to destination folder...")
+file(GLOB PROJECT_DEPENDENCIES ${SDL2_LIBRARY}/*.dll)
+
+foreach(Dependency IN LISTS PROJECT_DEPENDENCIES)
+    file(
+        COPY ${Dependency}
+        DESTINATION ${OUTPUT_DIR}
+    )
+endforeach()
