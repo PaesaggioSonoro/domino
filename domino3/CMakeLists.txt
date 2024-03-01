@@ -50,7 +50,9 @@ foreach(SRC_FILE IN LISTS SRC)
 endforeach()
 message(STATUS "")
 
-add_executable(${PROJECT_NAME} ${SRC})
+add_executable(${PROJECT_NAME} ${SRC}
+        src/game.c
+        src/game.h)
 
 
 # LINK PROGRAM

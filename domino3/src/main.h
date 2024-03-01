@@ -7,3 +7,4 @@ extern void cleanup(void);
 extern TTF_Font *loadFont(char *, int);
 extern void delay(unsigned int);
 extern void getInput(void);
+extern void GameLoop(void);

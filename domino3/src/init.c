@@ -55,7 +55,7 @@ void init(char *title){
         }
     }
 
-
+    initMenu();
 }
 
 void cleanup()

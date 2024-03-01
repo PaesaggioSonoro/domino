@@ -9,26 +9,22 @@ int main(int argc, char *argv[])
 
     init("Domino");
 
-    printf("porcaccioputtana\n");
-
     atexit(cleanup);
 
 
     go = 1;
 
-    // load things
 
 
-    game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/FreeSans.ttf", 16);
-    game.tessera1 = 1;
-    game.tessera2 = 1;
+    game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 35);
+    game.status = GameStatus_MENU;
 
     while (1){
         getInput();
-
+        GameLoop();
         draw();
 
-        //Update screen
+
         SDL_RenderPresent( game.renderer );
 
         delay(frameLimit);

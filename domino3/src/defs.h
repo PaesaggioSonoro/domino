@@ -5,6 +5,8 @@
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 
+#define PROJECT_ASSETS_PATH "D:/UNI/IAP/domino2/domino3/assets"
+
 // COLORS
 #define WHITE 0xFF, 0xFF, 0xFF, 0xFF
 #define BLACK 0x00, 0x00, 0x00, 0xFF
@@ -34,4 +36,13 @@
 //derived
 #define CARD_CIRCLES_AREA (CARD_HEIGHT - 2 * CARD_INTERNAL_PADDING)
 
+
+// enums
+
+enum GameStatus
+{
+    GameStatus_MENU,
+    GameStatus_PLAYING,
+    GameStatusGAMEOVER
+};
 
