@@ -5,5 +5,7 @@
 #include "SDL2/SDL_ttf.h"
 
 
+
 #define SCREEN_WIDTH 1500
 #define SCREEN_HEIGHT 1000
+#define NO_STDIO_REDIRECT

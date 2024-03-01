@@ -56,12 +56,15 @@ void drawString(char *text, int x, int y, TTF_Font *font, int centerX, int cente
     /* Blit the entire surface to the screen */
     SDL_DisplayMode DM;
     SDL_GetCurrentDisplayMode(0, &DM);
+
+
     dest.x = (centerX == 1 ? (DM.w - surface->w) / 2 : x);
     dest.y = (centerY == 1 ? (DM.h - surface->h) / 2 : y);
     dest.w = surface->w;
     dest.h = surface->h;
 
-    SDL_UpperBlit(surface, NULL, SDL_GetWindowSurface(game.win), &dest);
+//    SDL_UpperBlit(surface, NULL, SDL_GetWindowSurface(game.win), &dest);
+    SDL_RenderCopy(game.renderer, SDL_CreateTextureFromSurface(game.renderer, surface), NULL, &dest);
 
     /* Free the generated string image */
 

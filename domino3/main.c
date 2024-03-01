@@ -1,9 +1,4 @@
 #include "main.h"
-extern void init(char *);
-extern void cleanup(void);
-extern TTF_Font *loadFont(char *, int);
-extern void delay(unsigned int);
-extern void getInput(void);
 
 
 
@@ -14,6 +9,7 @@ int main(int argc, char *argv[])
 
     init("Domino");
 
+    printf("porcaccioputtana\n");
 
     atexit(cleanup);
 
@@ -25,9 +21,14 @@ int main(int argc, char *argv[])
 
     game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/FreeSans.ttf", 16);
 
+
     while (1){
         getInput();
 
+        draw();
+
+        //Update screen
+        SDL_RenderPresent( game.renderer );
 
         delay(frameLimit);
 
@@ -35,3 +36,4 @@ int main(int argc, char *argv[])
     }
 
 }
+
