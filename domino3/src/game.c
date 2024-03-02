@@ -1,5 +1,7 @@
 #include "game.h"
 
+int nextStatus = GameStatus_NULL;
+
 // MENU
 bool MenuSinglePlayerSelected = false;
 bool MenuWithAISelected = false;
@@ -15,6 +17,11 @@ void GameLoop(){
         return;
     } else {
         waitingNextInput = false;
+    }
+    if(nextStatus == GameStatus_ANIMATING){
+        if(animationComplete()){
+            game.status = nextStatus;
+        }
     }
     switch (game.status) {
         case GameStatus_MENU:
@@ -43,17 +50,18 @@ void GameLoop(){
                     MenuSinglePlayerSelected = true;
                 }
             }
-//            else if(input.enter){
-//                if(MenuSinglePlayerSelected){
-//                    game.status = GameStatus_PLAYING;
-//                } else if(MenuWithAISelected){
-//                    game.status = GameStatus_PLAYING;
-//                }
+            else if(input.enter) {
+                if (MenuSinglePlayerSelected) {
+                    game.status = GameStatus_ANIMATING;
+                    animateMenu(20, 30);
+                    nextStatus = GameStatus_PLAYING;
+                }
+            }
             break;
         case GameStatus_PLAYING:
             DistrubuteCards();
             break;
-        case GameStatusGAMEOVER:
+        case GameStatus_GAMEOVER:
             break;
     }
 }

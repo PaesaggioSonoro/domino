@@ -4,6 +4,9 @@
 
 void drawMenu();
 void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b, int a);
+float lerp(float start, float end, float t);
+bool animationComplete();
+static bool AnimatingMenu = false;
 
 
 void draw(){
@@ -14,6 +17,11 @@ void draw(){
     switch (game.status) {
         case GameStatus_MENU:
             drawMenu();
+            break;
+        case GameStatus_ANIMATING:
+            if(AnimatingMenu){
+                drawMenu();
+            }
             break;
     }
 //    drawTessera(game.tessera1, game.tessera2, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, false);
@@ -45,6 +53,9 @@ void initMenu(){
     // connects our texture with MenuDest_SinglePlayer to control position
     SDL_QueryTexture(MenuTex_SinglePlayer, NULL, NULL, &MenuDest_SinglePlayer.w, &MenuDest_SinglePlayer.h);
     SDL_QueryTexture(MenuTex_WithAI, NULL, NULL, &MenuDest_WithAI.w, &MenuDest_WithAI.h);
+    SDL_SetTextureBlendMode(MenuTex_SinglePlayer, SDL_BLENDMODE_BLEND);
+    SDL_SetTextureBlendMode(MenuTex_WithAI, SDL_BLENDMODE_BLEND);
+
 
     // adjust height and width of our image box.
     MenuDest_SinglePlayer.w *= 1.5;
@@ -59,11 +70,40 @@ void initMenu(){
     MenuDest_WithAI.y = (SCREEN_HEIGHT / 1.5) - MenuDest_WithAI.h / 2;
 }
 
+static float AnimationMenuCurrentStep = 0;
+static float AnimationMenuStepIncrement = 0;
+static Uint8 MenuImageAlpha = 255;
+static int MenuAnimationWait = 0;
+void animateMenu(int steps, int wait){
+    MenuAnimationWait = wait;
+    AnimatingMenu = true;
+    AnimationMenuStepIncrement = 1.0f/(float)steps;
+    printf("AnimationMenuStepIncrement: %f\n", AnimationMenuStepIncrement);
+    MenuImageAlpha = 255;
+}
+
 void drawMenu() {
-    if (MenuSinglePlayerSelected) {
-        drawRectSelection(MenuDest_SinglePlayer, 10, 6, RED);
-    } else if (MenuWithAISelected) {
-        drawRectSelection(MenuDest_WithAI, 10, 6, RED);
+    if(AnimatingMenu){
+
+        AnimationMenuCurrentStep += AnimationMenuStepIncrement;
+        if(AnimationMenuCurrentStep >= 1){
+            if(MenuAnimationWait > 0){
+                MenuAnimationWait--;
+            } else {
+                AnimationMenuCurrentStep = 0;
+                AnimatingMenu = false;
+                // print MenuImageAlpha
+            }
+        } else {
+            MenuImageAlpha = lerp(255, 0, AnimationMenuCurrentStep);
+            SDL_SetTextureAlphaMod(MenuSinglePlayerSelected ? MenuTex_WithAI : MenuTex_SinglePlayer, MenuImageAlpha);
+        }
+    }else {
+        if (MenuSinglePlayerSelected) {
+            drawRectSelection(MenuDest_SinglePlayer, 10, 6, RED);
+        } else if (MenuWithAISelected) {
+            drawRectSelection(MenuDest_WithAI, 10, 6, RED);
+        }
     }
     SDL_RenderCopy(game.renderer, MenuTex_SinglePlayer, NULL, &MenuDest_SinglePlayer);
     SDL_RenderCopy(game.renderer, MenuTex_WithAI, NULL, &MenuDest_WithAI);
@@ -93,4 +133,12 @@ void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b,
     SDL_Rect right = {rect.x + rect.w + offset, rect.y - offset - size, size, rect.h + offset * 2 + size};
     SDL_RenderFillRect(game.renderer, &right);
     SDL_SetRenderDrawColor(game.renderer, BLACK);
+}
+
+bool animationComplete(){
+    return !(AnimatingMenu);
+}
+
+float lerp(float start, float end, float t) {
+    return (1 - t) * start + t * end;
 }

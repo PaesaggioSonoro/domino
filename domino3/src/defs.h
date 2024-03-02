@@ -41,8 +41,10 @@
 
 enum GameStatus
 {
+    GameStatus_NULL,
     GameStatus_MENU,
     GameStatus_PLAYING,
-    GameStatusGAMEOVER
+    GameStatus_GAMEOVER,
+    GameStatus_ANIMATING
 };
 

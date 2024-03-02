@@ -39,7 +39,7 @@ void getInput()
                         input.right = 1;
                         break;
 
-                    case SDLK_KP_ENTER:
+                    case SDLK_RETURN:
                     case SDLK_SPACE:
                         input.enter = 1;
                         break;
@@ -71,7 +71,7 @@ void getInput()
                     case SDLK_RIGHT:
                         input.right = 0;
                         break;
-                    case SDLK_KP_ENTER:
+                    case SDLK_RETURN:
                     case SDLK_SPACE:
                         input.enter = 0;
                         break;
