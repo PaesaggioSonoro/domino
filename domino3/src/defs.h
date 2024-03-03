@@ -44,6 +44,8 @@
 //derived
 #define CARD_CIRCLES_AREA (CARD_HEIGHT - 2 * CARD_INTERNAL_PADDING)
 
+// FUNCTIONS
+
 
 // enums
 

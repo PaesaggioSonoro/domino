@@ -45,7 +45,7 @@ void getInput()
                         break;
 
                     case SDLK_ESCAPE:
-                        exit(0);
+                        input.esc = 1;
                         break;
 
                     default:
@@ -74,6 +74,9 @@ void getInput()
                     case SDLK_RETURN:
                     case SDLK_SPACE:
                         input.enter = 0;
+                        break;
+                    case SDLK_ESCAPE:
+                        input.esc = 0;
                         break;
 
                     default:

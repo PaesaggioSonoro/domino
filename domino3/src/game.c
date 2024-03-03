@@ -5,6 +5,8 @@
 #define CHECK_INPUT_DOWN if(input.down) waitingNextInput = true
 #define CHECK_INPUT_LEFT if(input.left) waitingNextInput = true
 #define CHECK_INPUT_RIGHT if(input.right) waitingNextInput = true
+#define CHECK_INPUT_ENTER if(input.enter) waitingNextInput = true
+#define CHECK_INPUT_ESC if(input.esc) waitingNextInput = true
 
 
 int nextStatus = GameStatus_NULL;
@@ -109,6 +111,44 @@ void GameLoop(){
                         } else {
                             getLastUserCard()->selected = true;
                         }
+                    } else if(input.enter){
+                        CHECK_INPUT_ENTER;
+                        Card * selectedCard = getSelectedUserCard();
+                        if(!game.firstUsed){    // no card on table
+                            if(selectedCard->next){
+                                selectedCard->next->previous = selectedCard->previous;
+                                selectedCard->next->selected = true;
+                            }
+                            if(selectedCard->previous){
+                                selectedCard->previous->next = selectedCard->next;
+                                if(!selectedCard->next) selectedCard->previous->selected = true;
+                            }
+
+                            selectedCard->used = true;
+                            game.firstUsed = selectedCard;
+                            game.lastUsed = selectedCard;
+                            selectedCard->selected = false;
+                            selectedCard->next = NULL;
+                            selectedCard->previous = NULL;
+
+
+                        } else {
+                            if(selectedCard->next){
+                                selectedCard->next->previous = selectedCard->previous;
+                                selectedCard->next->selected = true;
+                            }
+                            if(selectedCard->previous){
+                                selectedCard->previous->next = selectedCard->next;
+                                if(!selectedCard->next) selectedCard->previous->selected = true;
+                            }
+                            
+                            selectedCard->previous = game.lastUsed;
+                            selectedCard->previous->next = selectedCard;
+                            game.lastUsed = selectedCard;
+                            selectedCard->used = true;
+                            selectedCard->selected = false;
+                            selectedCard->next = NULL;
+                        }
                     }
                 }
             }
@@ -138,11 +178,13 @@ static Card * getSelectedUserCard(){
     return NULL;
 }
 
+
+
 bool someInput(){
-    return input.up || input.down || input.left || input.right || input.enter;
+    return input.up || input.down || input.left || input.right || input.enter || input.esc;
 }
 
 
 bool inputReleased(){
-    return !(input.up || input.down || input.left || input.right || input.enter);
+    return !(input.up || input.down || input.left || input.right || input.enter || input.esc);
 }

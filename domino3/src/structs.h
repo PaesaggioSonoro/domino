@@ -11,7 +11,7 @@ typedef struct Card
     bool first;
 } Card;
 
-typedef struct
+typedef struct Game
 {
     int status;
     enum GameMode mode;
@@ -21,11 +21,11 @@ typedef struct
     int score1;
     int score2;
     struct Card cards[N_CARDS*2];
+    struct Card *firstUsed;
+    struct Card *lastUsed;
 } Game;
 
-
-struct Control;
 typedef struct Control
 {
-    int up, down, left, right, enter;
+    int up, down, left, right, enter, esc;
 } Control;

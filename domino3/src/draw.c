@@ -155,6 +155,16 @@ void drawCards(Card* cards){
             }
         }
     }
+
+    // draw table cards
+    y = SCREEN_HEIGHT/2 - CARD_HEIGHT/2;
+    x = SCREEN_WIDTH/2 - (CARD_WIDTH * used + CARDS_SPACE_BETWEEN * (used-1))/2;
+    Card *current = game.firstUsed;
+    while(current != NULL){
+        drawTesseraStruct(*current, x, y);
+        x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
+        current = current->next;
+    }
 }
 
 void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b, int a){
