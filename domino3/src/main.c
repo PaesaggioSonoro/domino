@@ -18,6 +18,9 @@ int main(int argc, char *argv[])
 
     game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 35);
     game.status = GameStatus_MENU;
+    game.mode = GameMode_NULL;
+
+    DistrubuteCards();
 
     while (1){
         getInput();
@@ -26,9 +29,8 @@ int main(int argc, char *argv[])
 
 
         SDL_RenderPresent( game.renderer );
-
+        SDL_RenderClear( game.renderer );
         delay(frameLimit);
-
         frameLimit = SDL_GetTicks() + 16;
     }
 

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define PROJECT_ASSETS_PATH "D:/UNI/IAP/domino2/domino3/assets"
 
@@ -16,15 +17,19 @@
 #define SCREEN_HEIGHT 1000
 #define NO_STDIO_REDIRECT
 
-#define CARD_HEIGHT 70
+#define CARD_HEIGHT 60
 #define CARD_WIDTH (2 * CARD_HEIGHT)
 #define CARD_BORDER 3
 
-#define CARD_INTERNAL_PADDING 6
-#define CARD_CIRCLE_RADIUS 7
+#define CARD_INTERNAL_PADDING (CARD_HEIGHT/10)
+#define CARD_CIRCLE_RADIUS (CARD_HEIGHT/10)
 
 #define CARD_SPACER_SIZE 1
 #define CARD_SPACER_PADDING 6
+#define CARDS_SPACE_BETWEEN 10
+
+#define CARD_SELECTED_BORDER 5
+#define CARD_SELECTED_BORDER_PADDING 2
 
 #define CARD_COLOR 0xFE, 0xED, 0xD0, 0xFF
 #define CIRCLE_COLOR BLACK
@@ -32,6 +37,9 @@
 #define CARD_BORDER_COLOR_SELECTED RED
 
 #define CARD_SPACER_COLOR BLACK
+
+// GAME
+#define N_CARDS 10
 
 //derived
 #define CARD_CIRCLES_AREA (CARD_HEIGHT - 2 * CARD_INTERNAL_PADDING)
@@ -46,5 +54,12 @@ enum GameStatus
     GameStatus_PLAYING,
     GameStatus_GAMEOVER,
     GameStatus_ANIMATING
+};
+
+enum GameMode
+{
+    GameMode_SINGLE_PLAYER,
+    GameMode_WITH_AI,
+    GameMode_NULL
 };
 

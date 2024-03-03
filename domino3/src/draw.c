@@ -7,10 +7,9 @@ void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b,
 float lerp(float start, float end, float t);
 bool animationComplete();
 static bool AnimatingMenu = false;
-
+void drawCards(Card* cards);
 
 void draw(){
-    SDL_RenderClear( game.renderer );
     // Clear screen
     SDL_SetRenderDrawColor( game.renderer, 0x00, 0x00, 0x00, 0x00 );
 
@@ -22,6 +21,9 @@ void draw(){
             if(AnimatingMenu){
                 drawMenu();
             }
+            break;
+        case GameStatus_PLAYING:
+            drawCards(game.cards);
             break;
     }
 //    drawTessera(game.tessera1, game.tessera2, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, false);
@@ -78,7 +80,6 @@ void animateMenu(int steps, int wait){
     MenuAnimationWait = wait;
     AnimatingMenu = true;
     AnimationMenuStepIncrement = 1.0f/(float)steps;
-    printf("AnimationMenuStepIncrement: %f\n", AnimationMenuStepIncrement);
     MenuImageAlpha = 255;
 }
 
@@ -122,6 +123,40 @@ void delay(unsigned int frameLimit){
     }
 }
 
+void drawCards(Card* cards){
+    int player1 = 0;
+    int player2 = 0;
+    int used = 0;
+    Card first;
+    for(int i = 0; i < N_CARDS*2; i++){
+        if(cards[i].used) used++;
+        else if(cards[i].player1) player1++;
+        else player2++;
+        if(cards[i].first) first = cards[i];
+    }
+    // draw player 1 cards
+    int y = SCREEN_HEIGHT-SCREEN_HEIGHT/5.5;
+    int x = SCREEN_WIDTH/2 - (CARD_WIDTH * player1 + CARDS_SPACE_BETWEEN * (player1-1))/2;
+    for(int i = 0; i < N_CARDS*2; i++){
+        if(cards[i].player1 && !cards[i].used){
+            drawTesseraStruct(cards[i], x, y);
+            x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
+        }
+    }
+
+    if(game.mode == GameMode_WITH_AI){
+        // draw player 2 cards
+        y = SCREEN_HEIGHT/7;
+        x = SCREEN_WIDTH/2 - (CARD_WIDTH * player2 + CARDS_SPACE_BETWEEN * (player2-1))/2;
+        for(int i = 0; i < N_CARDS*2; i++){
+            if(!cards[i].player1 && !cards[i].used){
+                drawTesseraStruct(cards[i], x, y);
+                x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
+            }
+        }
+    }
+}
+
 void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b, int a){
     SDL_SetRenderDrawColor(game.renderer, r, g, b, a);
     SDL_Rect top = {rect.x - offset - size, rect.y - offset - size, rect.w + offset * 2 + size, size};
@@ -134,6 +169,8 @@ void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b,
     SDL_RenderFillRect(game.renderer, &right);
     SDL_SetRenderDrawColor(game.renderer, BLACK);
 }
+
+
 
 bool animationComplete(){
     return !(AnimatingMenu);
