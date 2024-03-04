@@ -61,7 +61,7 @@ static void drawNumber(int n, int x, int y){
 
 
 
-void drawTesseraVal(int val1, int val2, int x, int y, bool selected){
+void drawTesseraVal(int val1, int val2, int x, int y, bool selected, bool wrong){
     SDL_Rect fillRect = { x, y, CARD_WIDTH, CARD_HEIGHT};
     SDL_SetRenderDrawColor( game.renderer, CARD_COLOR);
     SDL_RenderFillRect( game.renderer, &fillRect);
@@ -112,8 +112,25 @@ void drawTesseraVal(int val1, int val2, int x, int y, bool selected){
     SDL_SetRenderDrawColor( game.renderer, CIRCLE_COLOR);
     drawNumber(val1, x + CARD_INTERNAL_PADDING, y + CARD_INTERNAL_PADDING);
     drawNumber(val2, x + CARD_WIDTH/2 + CARD_INTERNAL_PADDING, y + CARD_INTERNAL_PADDING);
+
+    if(wrong){
+        SDL_SetRenderDrawColor( game.renderer, RED);
+        int x1 = x+5;
+        int x2 = x + CARD_WIDTH - 5;
+        for(int i = 0; i < 5; i++){
+            SDL_RenderDrawLine(game.renderer, x1, y-5, x2, y + CARD_HEIGHT + 5);
+            x1++;x2++;
+        }x1 = x+5;
+        x2 = x + CARD_WIDTH - 5;
+        for (int i = 0; i < 5; i++){
+            SDL_RenderDrawLine(game.renderer, x1, y + CARD_HEIGHT + 5, x2, y-5);
+            x1--;x2--;
+        }
+    }
+    SDL_SetRenderDrawColor( game.renderer, BLACK);
+
 }
 
 void drawTesseraStruct(Card t, int x, int y){
-    drawTesseraVal(t.value1, t.value2, x, y, t.selected);
+    drawTesseraVal(t.val1, t.val2, x, y, t.selected, t.wrong);
 }

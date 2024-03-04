@@ -28,6 +28,7 @@
 #define CARD_SPACER_PADDING 6
 #define CARDS_SPACE_BETWEEN 10
 
+
 #define CARD_SELECTED_BORDER 5
 #define CARD_SELECTED_BORDER_PADDING 2
 
@@ -63,5 +64,12 @@ enum GameMode
     GameMode_SINGLE_PLAYER,
     GameMode_WITH_AI,
     GameMode_NULL
+};
+
+enum CardPosition {
+    CardPosition_TABLE,
+    CardPosition_HAND,
+    CardPosition_ChoosingR,
+    CardPosition_ChoosingL
 };
 

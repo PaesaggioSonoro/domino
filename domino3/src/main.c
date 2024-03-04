@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     game.status = GameStatus_MENU;
     game.mode = GameMode_NULL;
 
-    DistrubuteCards();
+    DistributeCards();
 
     while (1){
         getInput();

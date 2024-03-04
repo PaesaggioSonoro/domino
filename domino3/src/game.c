@@ -1,14 +1,5 @@
 #include "game.h"
 
-#define CHECK_INPUTS if(someInput()) waitingNextInput = true
-#define CHECK_INPUT_UP if(input.up) waitingNextInput = true
-#define CHECK_INPUT_DOWN if(input.down) waitingNextInput = true
-#define CHECK_INPUT_LEFT if(input.left) waitingNextInput = true
-#define CHECK_INPUT_RIGHT if(input.right) waitingNextInput = true
-#define CHECK_INPUT_ENTER if(input.enter) waitingNextInput = true
-#define CHECK_INPUT_ESC if(input.esc) waitingNextInput = true
-
-
 int nextStatus = GameStatus_NULL;
 
 // MENU
@@ -18,29 +9,10 @@ bool MenuWithAISelected = false;
 // GAME
 bool SelectingFromTable = false;
 
-static bool inputReleased();
-static bool someInput();
-static Card * getFirstUserCard();
-static Card * getLastUserCard();
-static Card * getSelectedUserCard();
 
-void DistrubuteCards(){
-    srand(time(NULL));
-    // fill cards array with random values
-    for(int i = 0; i < N_CARDS*2; i++){
-        game.cards[i].value1 = rand() % 6 + 1;
-        game.cards[i].value2 = rand() % 6 + 1;
-        game.cards[i].selected = false;
-        game.cards[i].used = false;
-        game.cards[i].first = i%N_CARDS == 0;
-        game.cards[i].player1 = i < N_CARDS;
-        if(i%N_CARDS != 0) game.cards[i-1].next = &game.cards[i];
-        // set previous field (half should not have previous)
-        if(i!=0 && i!=N_CARDS) game.cards[i].previous = &game.cards[i-1];
-    }
-}
 
 bool waitingNextInput = false;
+
 void GameLoop(){
     if(waitingNextInput && someInput()){
         return;
@@ -55,7 +27,7 @@ void GameLoop(){
     switch (game.status) {
         case GameStatus_MENU:
             CHECK_INPUTS;
-            if(input.up||input.right){
+            if(input.up||input.right||input.down||input.left){
                 if(MenuSinglePlayerSelected){
                     MenuSinglePlayerSelected = false;
                     MenuWithAISelected = true;
@@ -66,25 +38,17 @@ void GameLoop(){
                 } else {
                     MenuSinglePlayerSelected = true;
                 }
-            } else if(input.down||input.left){
-                if(MenuSinglePlayerSelected){
-                    MenuSinglePlayerSelected = false;
-                    MenuWithAISelected = true;
-                }
-                else if(MenuWithAISelected){
-                    MenuSinglePlayerSelected = true;
-                    MenuWithAISelected = false;
-                } else {
-                    MenuSinglePlayerSelected = true;
-                }
-            }
-            else if(input.enter) {
+            } else if(input.enter) {
                 if (MenuSinglePlayerSelected) {
                     game.status = GameStatus_ANIMATING;
                     animateMenu(20, 30);
                     nextStatus = GameStatus_PLAYING;
                     game.mode = GameMode_SINGLE_PLAYER;
+                } else {
+                    printf("AI mode not implemented yet\n");
                 }
+            } else if(input.esc){
+                exit(0);
             }
             break;
         case GameStatus_PLAYING:
@@ -124,32 +88,43 @@ void GameLoop(){
                                 if(!selectedCard->next) selectedCard->previous->selected = true;
                             }
 
-                            selectedCard->used = true;
+                            selectedCard->position = CardPosition_TABLE;
                             game.firstUsed = selectedCard;
                             game.lastUsed = selectedCard;
                             selectedCard->selected = false;
                             selectedCard->next = NULL;
                             selectedCard->previous = NULL;
-
-
                         } else {
-                            if(selectedCard->next){
-                                selectedCard->next->previous = selectedCard->previous;
-                                selectedCard->next->selected = true;
-                            }
-                            if(selectedCard->previous){
-                                selectedCard->previous->next = selectedCard->next;
-                                if(!selectedCard->next) selectedCard->previous->selected = true;
-                            }
-                            
-                            selectedCard->previous = game.lastUsed;
-                            selectedCard->previous->next = selectedCard;
-                            game.lastUsed = selectedCard;
-                            selectedCard->used = true;
-                            selectedCard->selected = false;
-                            selectedCard->next = NULL;
+                            selectedCard->position = CardPosition_ChoosingL;
+                            SelectingFromTable = true;
                         }
                     }
+                }
+            } else{
+                CHECK_INPUTS;
+                Card * selectedCard = getSelectedUserCard();
+                if(selectedCard->position == CardPosition_ChoosingL && input.right){
+                    selectedCard->position = CardPosition_ChoosingR;
+                } else if(selectedCard->position == CardPosition_ChoosingR && input.left){
+                    selectedCard->position = CardPosition_ChoosingL;
+                } else if(input.up||input.down){    // rotate card
+                    int temp = selectedCard->val1;
+                    selectedCard->val1 = selectedCard->val2;
+                    selectedCard->val2 = temp;
+                } else if(input.enter){     // place card
+                    if(selectedCard->position == CardPosition_ChoosingL){
+                        if(selectedCard->val2 == game.firstUsed->val1){
+                            placeCard(selectedCard, true);
+                        } else wrongCard(selectedCard);
+                    } else if(selectedCard->position == CardPosition_ChoosingR){
+                        if(selectedCard->val1 == game.lastUsed->val2){
+                            placeCard(selectedCard, false);
+                        } else wrongCard(selectedCard);
+                    }
+                    SelectingFromTable = false;
+                } else if(input.esc){
+                    selectedCard->position = CardPosition_HAND;
+                    SelectingFromTable = false;
                 }
             }
             break;
@@ -159,15 +134,77 @@ void GameLoop(){
 
 }
 
+void DistributeCards(){
+    srand(time(NULL));
+    // fill cards array with random values
+    for(int i = 0; i < N_CARDS*2; i++){
+        game.cards[i].val1 = rand() % 6 + 1;
+        game.cards[i].val2 = rand() % 6 + 1;
+        game.cards[i].selected = false;
+        game.cards[i].ofPlayer = i < N_CARDS;
+        game.cards[i].position = CardPosition_HAND;
+        if(i%N_CARDS != 0) game.cards[i-1].next = &game.cards[i];
+        if(i!=0 && i!=N_CARDS) game.cards[i].previous = &game.cards[i-1];
+    }
+}
+
+// first means at left, not first placed
+static void placeCard(Card * card, bool first){
+    if(card->next){
+        card->next->previous = card->previous;
+        card->next->selected = true;
+    }
+    if(card->previous){
+        card->previous->next = card->next;
+        if(!card->next) card->previous->selected = true;
+    }
+    card->selected = false;
+
+    card->next = first? game.firstUsed : NULL;
+    card->previous = first? NULL : game.lastUsed;
+
+    if(first) {
+        card->next->previous = card;
+        game.firstUsed = card;
+    }
+    else {
+        card->previous->next = card;
+        game.lastUsed = card;
+    }
+    card->position = CardPosition_TABLE;
+    if(!checkMoves()){
+        game.status = GameStatus_GAMEOVER;
+        printf("Game Over\n");
+    }
+}
+
+static void wrongCard(Card * card){
+    card->wrong = true;
+    game.status = GameStatus_ANIMATING;
+    nextStatus = GameStatus_PLAYING;
+    animateCardWrong(100);
+}
+
+static int checkMoves(){
+    if(game.firstUsed == NULL) return N_CARDS;
+    int possibleMoves = 0;
+    for(int i = 0; i < N_CARDS; i++){
+        Card current = game.cards[i];
+        if(current.position == CardPosition_HAND && current.ofPlayer && (
+        current.val1 == game.firstUsed->val1 || current.val2 == game.firstUsed->val1 ||
+        current.val1 == game.lastUsed->val2 || current.val2 == game.lastUsed->val2)) possibleMoves++;
+    }
+    return possibleMoves;
+}
 static Card * getFirstUserCard(){
     for(int i = 0; i < N_CARDS; i++){
-        if(!game.cards[i].used) return &game.cards[i];
+        if(game.cards[i].position == CardPosition_HAND) return &game.cards[i];
     }
     return NULL;
 }
 static Card * getLastUserCard(){
     for(int i = N_CARDS-1; i >= 0; i--){
-        if(!game.cards[i].used) return &game.cards[i];
+        if(game.cards[i].position == CardPosition_HAND) return &game.cards[i];
     }
     return NULL;
 }
@@ -179,12 +216,6 @@ static Card * getSelectedUserCard(){
 }
 
 
-
 bool someInput(){
     return input.up || input.down || input.left || input.right || input.enter || input.esc;
-}
-
-
-bool inputReleased(){
-    return !(input.up || input.down || input.left || input.right || input.enter || input.esc);
 }

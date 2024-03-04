@@ -2,13 +2,13 @@
 
 typedef struct Card
 {
-    int value1, value2;
-    bool player1;
+    int val1, val2;
+    bool ofPlayer;
     bool selected;
-    bool used;
     struct Card * next; // next card on table or hand (based on "used")
     struct Card * previous;
-    bool first;
+    bool wrong;
+    enum CardPosition position;
 } Card;
 
 typedef struct Game

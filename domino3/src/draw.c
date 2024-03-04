@@ -7,6 +7,7 @@ void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b,
 float lerp(float start, float end, float t);
 bool animationComplete();
 static bool AnimatingMenu = false;
+static bool AnimatingCardWrong = false;
 void drawCards(Card* cards);
 
 void draw(){
@@ -20,6 +21,8 @@ void draw(){
         case GameStatus_ANIMATING:
             if(AnimatingMenu){
                 drawMenu();
+            } else if (AnimatingCardWrong){
+                drawCards(game.cards);
             }
             break;
         case GameStatus_PLAYING:
@@ -123,22 +126,30 @@ void delay(unsigned int frameLimit){
     }
 }
 
+int AnimationCardWrongWait = 0;
+int AnimationCardWrongCurrentStep = 0;
+void animateCardWrong(int wait){
+    AnimatingCardWrong = true;
+    AnimationCardWrongWait = wait;
+}
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "NullDereference"
 void drawCards(Card* cards){
     int player1 = 0;
     int player2 = 0;
-    int used = 0;
-    Card first;
+    int table = 0;
+    Card * choosing = NULL;
     for(int i = 0; i < N_CARDS*2; i++){
-        if(cards[i].used) used++;
-        else if(cards[i].player1) player1++;
+        if(cards[i].position == CardPosition_TABLE) table++;
+        else if(cards[i].position == CardPosition_ChoosingL || cards[i].position == CardPosition_ChoosingR) choosing = &cards[i];
+        else if(cards[i].ofPlayer) player1++;
         else player2++;
-        if(cards[i].first) first = cards[i];
     }
     // draw player 1 cards
     int y = SCREEN_HEIGHT-SCREEN_HEIGHT/5.5;
     int x = SCREEN_WIDTH/2 - (CARD_WIDTH * player1 + CARDS_SPACE_BETWEEN * (player1-1))/2;
     for(int i = 0; i < N_CARDS*2; i++){
-        if(cards[i].player1 && !cards[i].used){
+        if(cards[i].ofPlayer && cards[i].position == CardPosition_HAND){
             drawTesseraStruct(cards[i], x, y);
             x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
         }
@@ -149,7 +160,7 @@ void drawCards(Card* cards){
         y = SCREEN_HEIGHT/7;
         x = SCREEN_WIDTH/2 - (CARD_WIDTH * player2 + CARDS_SPACE_BETWEEN * (player2-1))/2;
         for(int i = 0; i < N_CARDS*2; i++){
-            if(!cards[i].player1 && !cards[i].used){
+            if(!cards[i].ofPlayer && cards[i].position == CardPosition_HAND){
                 drawTesseraStruct(cards[i], x, y);
                 x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
             }
@@ -157,15 +168,38 @@ void drawCards(Card* cards){
     }
 
     // draw table cards
-    y = SCREEN_HEIGHT/2 - CARD_HEIGHT/2;
-    x = SCREEN_WIDTH/2 - (CARD_WIDTH * used + CARDS_SPACE_BETWEEN * (used-1))/2;
+    int tableY = SCREEN_HEIGHT/2 - CARD_HEIGHT/2;
+    int tableCurrentX = SCREEN_WIDTH/2 - (CARD_WIDTH * table + CARDS_SPACE_BETWEEN * (table - 1)) / 2;
+    int tableStartX = tableCurrentX;
     Card *current = game.firstUsed;
     while(current != NULL){
-        drawTesseraStruct(*current, x, y);
-        x += CARD_WIDTH + CARDS_SPACE_BETWEEN;
+        drawTesseraStruct(*current, tableCurrentX, tableY);
+        tableCurrentX += CARD_WIDTH + CARDS_SPACE_BETWEEN;
         current = current->next;
     }
+
+    // draw choosing card
+    if(choosing){
+        if(choosing->position == CardPosition_ChoosingL){
+            drawTesseraStruct(*choosing, tableStartX - CARD_WIDTH - CARDS_SPACE_BETWEEN*2, tableY);
+        } else {
+            drawTesseraStruct(*choosing, tableCurrentX +CARDS_SPACE_BETWEEN*2, tableY);
+        }
+    }
+    {
+
+    }
+    if(AnimatingCardWrong){
+        AnimationCardWrongCurrentStep++;
+        if(AnimationCardWrongCurrentStep > AnimationCardWrongWait){
+            choosing->wrong = false;
+            choosing->position = CardPosition_HAND;
+            AnimatingCardWrong = false;
+            AnimationCardWrongCurrentStep = 0;
+        }
+    }
 }
+#pragma clang diagnostic pop
 
 void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b, int a){
     SDL_SetRenderDrawColor(game.renderer, r, g, b, a);
@@ -183,7 +217,7 @@ void drawRectSelection(SDL_Rect rect, int offset, int size, int r, int g, int b,
 
 
 bool animationComplete(){
-    return !(AnimatingMenu);
+    return !(AnimatingMenu || AnimatingCardWrong);
 }
 
 float lerp(float start, float end, float t) {
