@@ -12,6 +12,7 @@ extern Game game;
 extern Control input;
 extern bool animationComplete();
 extern void animateMenu(int steps, int wait);
+extern void resetMenuAnimation();
 extern void animateCardWrong(int wait);
 extern void drawCards(Card* cards);
 
@@ -24,3 +25,4 @@ static Card * getSelectedUserCard();
 static int checkMoves();
 static void placeCard(Card * card, bool first);
 static void wrongCard(Card * card);
+void DistributeCards();

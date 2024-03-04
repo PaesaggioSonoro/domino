@@ -34,6 +34,10 @@ void draw(){
         case GameStatus_GAMEOVER:
             drawCards(game.cards);
             drawScore(game.score1, game.score2);
+            if(game.mode == GameMode_SINGLE_PLAYER){
+                drawInfo(true, "Game Over", true);
+                drawInfo(false, "Press Enter to play again", false);
+            }
             break;
     }
 //    drawTessera(game.tessera1, game.tessera2, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, false);
@@ -91,6 +95,12 @@ void animateMenu(int steps, int wait){
     AnimatingMenu = true;
     AnimationMenuStepIncrement = 1.0f/(float)steps;
     MenuImageAlpha = 255;
+}
+void resetMenuAnimation(){
+    AnimatingMenu = false;
+    AnimationMenuCurrentStep = 0;
+    MenuImageAlpha = 255;
+    SDL_SetTextureAlphaMod(MenuSinglePlayerSelected ? MenuTex_WithAI : MenuTex_SinglePlayer, MenuImageAlpha);
 }
 
 void drawMenu() {

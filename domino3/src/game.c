@@ -107,6 +107,9 @@ void GameLoop(){
                             selectedCard->previous = NULL;
 
                             game.score1+= selectedCard->val1 + selectedCard->val2;
+                            if(!checkMoves()){
+                                game.status = GameStatus_GAMEOVER;
+                            }
                         } else {
                             selectedCard->position = CardPosition_ChoosingL;
                             SelectingFromTable = true;
@@ -144,12 +147,26 @@ void GameLoop(){
             }
             break;
         case GameStatus_GAMEOVER:
+            CHECK_INPUT_ENTER;CHECK_INPUT_ESC;
+            if(input.enter){
+                resetMenuAnimation();
+                game.status = GameStatus_MENU;
+                game.score1 = 0;
+                game.score2 = 0;
+                DistributeCards();
+            } else if(input.esc){
+                exit(0);
+            }
             break;
     }
 
 }
 
 void DistributeCards(){
+    game.firstUsed = NULL;
+    game.lastUsed = NULL;
+    // empty cards
+
     srand(time(NULL));
     // fill cards array with random values
     for(int i = 0; i < N_CARDS*2; i++){
@@ -189,7 +206,6 @@ static void placeCard(Card * card, bool first){
     card->position = CardPosition_TABLE;
     if(!checkMoves()){
         game.status = GameStatus_GAMEOVER;
-        printf("Game Over\n");
     }
     int points = card->val1 + card->val2;
     card->ofPlayer? (game.score1+=points) : (game.score2 += points);
