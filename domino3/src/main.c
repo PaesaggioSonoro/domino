@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 
 
 
-    game.font = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 35);
+    game.fontBig = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 35);
+    game.fontSmall = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 20);
     game.status = GameStatus_MENU;
     game.mode = GameMode_NULL;
 

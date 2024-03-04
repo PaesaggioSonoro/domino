@@ -26,11 +26,18 @@ void draw(){
             }
             break;
         case GameStatus_PLAYING:
+            drawInfo(true, game.info, true);
+            drawInfo(false, game.info2, false);
             drawCards(game.cards);
+            drawScore(game.score1, game.score2);
+            break;
+        case GameStatus_GAMEOVER:
+            drawCards(game.cards);
+            drawScore(game.score1, game.score2);
             break;
     }
 //    drawTessera(game.tessera1, game.tessera2, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, false);
-//    drawString("cacca", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, game.font, 0, 0);
+//    drawString("cacca", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, game.fontBig, 0, 0);
 
 }
 

@@ -17,12 +17,15 @@ typedef struct Game
     enum GameMode mode;
     SDL_Renderer *renderer;
     SDL_Window *win;
-    TTF_Font *font;
+    TTF_Font *fontBig;
+    TTF_Font *fontSmall;
     int score1;
     int score2;
     struct Card cards[N_CARDS*2];
     struct Card *firstUsed;
     struct Card *lastUsed;
+    char *info;
+    char *info2;
 } Game;
 
 typedef struct Control

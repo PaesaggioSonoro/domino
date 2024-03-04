@@ -61,7 +61,8 @@ void init(char *title){
 void cleanup()
 {
     // free the sprites
-    closeFont(game.font);
+    closeFont(game.fontBig);
+    closeFont(game.fontSmall);
     SDL_DestroyRenderer( game.renderer );
     SDL_DestroyWindow( game.win );
     TTF_Quit();

@@ -2,7 +2,7 @@
 
 TTF_Font *loadFont(char *name, int size)
 {
-    /* Use SDL_TTF to load the font at the specified size */
+    /* Use SDL_TTF to load the fontBig at the specified size */
 
     TTF_Font *font = TTF_OpenFont(name, size);
 
@@ -18,7 +18,7 @@ TTF_Font *loadFont(char *name, int size)
 
 void closeFont(TTF_Font *font)
 {
-    /* Close the font once we're done with it */
+    /* Close the fontBig once we're done with it */
 
     if (font != NULL)
     {
@@ -58,8 +58,8 @@ void drawString(char *text, int x, int y, TTF_Font *font, int centerX, int cente
     SDL_GetCurrentDisplayMode(0, &DM);
 
 
-    dest.x = (centerX == 1 ? (DM.w - surface->w) / 2 : x);
-    dest.y = (centerY == 1 ? (DM.h - surface->h) / 2 : y);
+    dest.x = (centerX == 1 ? x - (surface->w)/2 : x);
+    dest.y = (centerY == 1 ? y - (surface->h)/2 : y);
     dest.w = surface->w;
     dest.h = surface->h;
 
@@ -69,4 +69,19 @@ void drawString(char *text, int x, int y, TTF_Font *font, int centerX, int cente
     /* Free the generated string image */
 
     SDL_FreeSurface(surface);
+}
+
+void drawScore(int score1, int score2){
+    char text[20];
+    sprintf(text, "%d", score1);
+    drawString(text, SCREEN_WIDTH / 2, SCREEN_HEIGHT-50, game.fontBig, 0, 0);
+    if(game.mode == GameMode_WITH_AI){
+        sprintf(text, "%d", score2);
+        drawString(text, SCREEN_WIDTH / 2, 10, game.fontBig, 0, 0);
+    }
+}
+
+void drawInfo(bool up, char *text, bool big){
+    if(text == NULL || strlen(text)==0) return;
+    drawString(text, SCREEN_WIDTH/2, (up?0:50)+(SCREEN_HEIGHT/10)*7, big?game.fontBig:game.fontSmall, 1, 1);
 }

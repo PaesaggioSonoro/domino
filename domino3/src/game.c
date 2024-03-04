@@ -8,7 +8,10 @@ bool MenuWithAISelected = false;
 
 // GAME
 bool SelectingFromTable = false;
-
+int inactiveTimer = 0;
+#define INACTIVE_TIME 100
+#define INACTIVE_MESSAGE(a, t) if(inactiveTimer > t) game.info = a;
+#define INACTIVE_MESSAGE2(a, t) if(inactiveTimer > t) game.info2 = a;
 
 
 bool waitingNextInput = false;
@@ -52,7 +55,15 @@ void GameLoop(){
             }
             break;
         case GameStatus_PLAYING:
+            inactiveTimer++;
+            if(someInput()){
+                inactiveTimer = 0;
+                game.info = "";
+                game.info2 = "";
+            }
             if(!SelectingFromTable){
+                INACTIVE_MESSAGE("Select a card", INACTIVE_TIME);
+                INACTIVE_MESSAGE2("(Press Enter)", INACTIVE_TIME*2);
                 if(someInput() && !getSelectedUserCard()) {
                     CHECK_INPUTS;
                     getFirstUserCard()->selected = true;
@@ -94,6 +105,8 @@ void GameLoop(){
                             selectedCard->selected = false;
                             selectedCard->next = NULL;
                             selectedCard->previous = NULL;
+
+                            game.score1+= selectedCard->val1 + selectedCard->val2;
                         } else {
                             selectedCard->position = CardPosition_ChoosingL;
                             SelectingFromTable = true;
@@ -102,6 +115,8 @@ void GameLoop(){
                 }
             } else{
                 CHECK_INPUTS;
+                INACTIVE_MESSAGE("Move the card", INACTIVE_TIME);
+                INACTIVE_MESSAGE2("<- -> to move, UP DOWN to swap values, ENTER to place, ESC to change card", INACTIVE_TIME*3);
                 Card * selectedCard = getSelectedUserCard();
                 if(selectedCard->position == CardPosition_ChoosingL && input.right){
                     selectedCard->position = CardPosition_ChoosingR;
@@ -176,6 +191,8 @@ static void placeCard(Card * card, bool first){
         game.status = GameStatus_GAMEOVER;
         printf("Game Over\n");
     }
+    int points = card->val1 + card->val2;
+    card->ofPlayer? (game.score1+=points) : (game.score2 += points);
 }
 
 static void wrongCard(Card * card){
