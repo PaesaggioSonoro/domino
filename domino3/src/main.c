@@ -2,11 +2,22 @@
 
 
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "LocalValueEscapesScope"
 int main(int argc, char *argv[])
 {
+    char executable_path[1024];
+    if (getcwd(executable_path, sizeof(executable_path)) != NULL) {
+    } else {
+        perror("getcwd() error. Failed to retrieve the current working directory.");
+        return EXIT_FAILURE;
+    }
+
     unsigned int frameLimit = SDL_GetTicks() + 16;
     int go;
 
+    game.path = executable_path;
+//    strcpy(game.path, executable_path);
     init("Domino");
 
     atexit(cleanup);
@@ -16,8 +27,8 @@ int main(int argc, char *argv[])
 
 
 
-    game.fontBig = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 35);
-    game.fontSmall = loadFont("D:/UNI/IAP/domino2/domino3/assets/ArcadeN.ttf", 20);
+    game.fontBig = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 40);
+    game.fontSmall = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 20);
     game.status = GameStatus_MENU;
     game.mode = GameMode_NULL;
 
@@ -36,4 +47,11 @@ int main(int argc, char *argv[])
     }
 
 }
+#pragma clang diagnostic pop
 
+char * getAbsolutePath(char *relativePath){
+    char *path = malloc(strlen(game.path) + strlen(relativePath) + 1);
+    strcpy(path, game.path);
+    strcat(path, relativePath);
+    return path;
+}

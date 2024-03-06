@@ -5,8 +5,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 #include <time.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#define PROJECT_ASSETS_PATH "D:/UNI/IAP/domino2/domino3/assets"
 
 // COLORS
 #define WHITE 0xFF, 0xFF, 0xFF, 0xFF
@@ -40,7 +41,7 @@
 #define CARD_SPACER_COLOR BLACK
 
 // GAME
-#define N_CARDS 3
+#define N_CARDS 10
 
 //derived
 #define CARD_CIRCLES_AREA (CARD_HEIGHT - 2 * CARD_INTERNAL_PADDING)

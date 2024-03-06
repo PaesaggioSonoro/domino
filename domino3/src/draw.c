@@ -52,8 +52,8 @@ static SDL_Rect MenuDest_WithAI;
 void initMenu(){
     SDL_Surface* surface1;
     SDL_Surface* surface2;
-    surface1 = IMG_Load(PROJECT_ASSETS_PATH"/single_player.png");
-    surface2 = IMG_Load(PROJECT_ASSETS_PATH"/with_ai.png");
+    surface1 = IMG_Load(getAbsolutePath("/assets/single_player.png"));
+    surface2 = IMG_Load(getAbsolutePath("/assets/with_ai.png"));
 
     // loads image to our graphics hardware memory.
     MenuTex_SinglePlayer = SDL_CreateTextureFromSurface(game.renderer, surface1);

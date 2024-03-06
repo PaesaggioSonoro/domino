@@ -26,6 +26,7 @@ typedef struct Game
     struct Card *lastUsed;
     char *info;
     char *info2;
+    char *path;
 } Game;
 
 typedef struct Control
