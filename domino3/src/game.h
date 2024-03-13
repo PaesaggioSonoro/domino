@@ -26,3 +26,4 @@ static int checkMoves();
 static void placeCard(Card * card, bool first);
 static void wrongCard(Card * card);
 void DistributeCards();
+static Card * bestMove();

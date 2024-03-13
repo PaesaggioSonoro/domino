@@ -8,8 +8,14 @@ bool MenuWithAISelected = false;
 
 // GAME
 bool SelectingFromTable = false;
+bool playerTurn = true;
 int inactiveTimer = 0;
+int AIinactiveTimer = 0;
+Card * AImove = NULL;
+#define AIinactiveSteps 50
 #define INACTIVE_TIME 100
+#define MESSAGE(a) game.info = a;
+#define CLEAR_MESSAGE game.info = "";
 #define INACTIVE_MESSAGE(a, t) if(inactiveTimer > t) game.info = a;
 #define INACTIVE_MESSAGE2(a, t) if(inactiveTimer > t) game.info2 = a;
 
@@ -47,8 +53,11 @@ void GameLoop(){
                     animateMenu(20, 30);
                     nextStatus = GameStatus_PLAYING;
                     game.mode = GameMode_SINGLE_PLAYER;
-                } else {
-                    printf("AI mode not implemented yet\n");
+                } else if(MenuWithAISelected){
+                    game.status = GameStatus_ANIMATING;
+                    animateMenu(20, 30);
+                    nextStatus = GameStatus_PLAYING;
+                    game.mode = GameMode_WITH_AI;
                 }
             } else if(input.esc){
                 exit(0);
@@ -61,7 +70,32 @@ void GameLoop(){
                 game.info = "";
                 game.info2 = "";
             }
-            if(!SelectingFromTable){
+            if(game.mode == GameMode_WITH_AI && !playerTurn){
+                MESSAGE("AI is thinking");
+                switch ((AIinactiveTimer%AIinactiveSteps)==0?AIinactiveTimer/AIinactiveSteps:-1) {
+                    case 0:
+                        AImove = bestMove();
+                        break;
+                    case 1:
+                        AImove->selected = true;
+                        break;
+                    case 3:
+                        AImove->position = (AImove->val1 == game.firstUsed->val1 || AImove->val2 == game.firstUsed->val1)? CardPosition_ChoosingL: CardPosition_ChoosingR;
+                        break;
+                    case 4:
+                        if((AImove->position == CardPosition_ChoosingL && AImove->val2 != game.firstUsed->val1) ||
+                           (AImove->position == CardPosition_ChoosingR && AImove->val1 != game.lastUsed->val2)){
+                            int tmp = AImove->val1;
+                            AImove->val1 = AImove->val2;
+                            AImove->val2 = tmp;
+                        }
+                        break;
+                    case 5:
+                        placeCard(AImove, AImove->position == CardPosition_ChoosingL);
+                        break;
+                }
+                AIinactiveTimer++;
+            } else if(!SelectingFromTable){
                 INACTIVE_MESSAGE("Select a card", INACTIVE_TIME);
                 INACTIVE_MESSAGE2("(Press Enter)", INACTIVE_TIME*2);
                 if(someInput() && !getSelectedUserCard()) {
@@ -110,6 +144,7 @@ void GameLoop(){
                             if(!checkMoves()){
                                 game.status = GameStatus_GAMEOVER;
                             }
+                            playerTurn = false;
                         } else {
                             selectedCard->position = CardPosition_ChoosingL;
                             SelectingFromTable = true;
@@ -184,11 +219,11 @@ void DistributeCards(){
 static void placeCard(Card * card, bool first){
     if(card->next){
         card->next->previous = card->previous;
-        card->next->selected = true;
+        card->next->selected = playerTurn?true:false;
     }
     if(card->previous){
         card->previous->next = card->next;
-        if(!card->next) card->previous->selected = true;
+        if(!card->next) card->previous->selected = playerTurn?true:false;
     }
     card->selected = false;
 
@@ -209,6 +244,9 @@ static void placeCard(Card * card, bool first){
     }
     int points = card->val1 + card->val2;
     card->ofPlayer? (game.score1+=points) : (game.score2 += points);
+    playerTurn = !playerTurn;
+    AIinactiveTimer = 0;
+    CLEAR_MESSAGE;
 }
 
 static void wrongCard(Card * card){
@@ -229,19 +267,24 @@ static int checkMoves(){
     }
     return possibleMoves;
 }
-static Card * getFirstUserCard(){
-    for(int i = 0; i < N_CARDS; i++){
-        if(game.cards[i].position == CardPosition_HAND) return &game.cards[i];
+
+static Card * getFirstHandCard(bool user){
+    for(int i = 0; i < N_CARDS*2; i++){
+        if(game.cards[i].position == CardPosition_HAND && game.cards[i].ofPlayer == user) return &game.cards[i];
     }
     return NULL;
 }
-static Card * getLastUserCard(){
+static Card * getFirstUserCard() {return getFirstHandCard(true);}
+
+static Card * getLastHandCard(bool user){
     for(int i = N_CARDS-1; i >= 0; i--){
-        if(game.cards[i].position == CardPosition_HAND) return &game.cards[i];
+        if(game.cards[i].position == CardPosition_HAND && game.cards[i].ofPlayer == user) return &game.cards[i];
     }
     return NULL;
 }
-static Card * getSelectedUserCard(){
+static Card * getLastUserCard(){getLastHandCard(true);}
+
+static Card * getSelectedUserCard(){    // of player
     for(int i = 0; i < N_CARDS; i++){
         if(game.cards[i].selected) return &game.cards[i];
     }
@@ -252,3 +295,60 @@ static Card * getSelectedUserCard(){
 bool someInput(){
     return input.up || input.down || input.left || input.right || input.enter || input.esc;
 }
+
+
+// return highest card in AI hand
+static Card * bestMove(){
+    Card * best = getFirstHandCard(false);
+    int bestValue = best->val1 + best->val2;
+    Card * next = best->next;
+    while(next){
+        int newValue = next->val1 + next->val2;
+
+        if(next->val1 == game.firstUsed->val1 || next->val2 == game.firstUsed->val1 ||
+           next->val1 == game.lastUsed->val2  || next->val2 == game.lastUsed->val2){
+            if(newValue > bestValue){
+                best = next;
+                bestValue = newValue;
+            }
+        }
+        next = next->next;
+    }
+    return best;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// a
+
+
