@@ -90,7 +90,7 @@ void GameLoop(){
                             AImove->val2 = tmp;
                         }
                         break;
-                    case 5:
+                    case 6:
                         placeCard(AImove, AImove->position == CardPosition_ChoosingL);
                         break;
                 }
@@ -321,7 +321,6 @@ static Card * bestMove(){
         }
         next = next->next;
     }
-    printf("Best move: %d %d\n", best->val1, best->val2);
     return best;
 }
 

@@ -82,10 +82,10 @@ void initMenu(){
 
 
     // adjust height and width of our image box.
-    MenuDest_SinglePlayer.w *= 1.5;
-    MenuDest_SinglePlayer.h *= 1.5;
-    MenuDest_WithAI.w *= 1.5;
-    MenuDest_WithAI.h *= 1.5;
+    MenuDest_SinglePlayer.w *= MENU_IMAGES_SIZE;
+    MenuDest_SinglePlayer.h *= MENU_IMAGES_SIZE;
+    MenuDest_WithAI.w *= MENU_IMAGES_SIZE;
+    MenuDest_WithAI.h *= MENU_IMAGES_SIZE;
 
     MenuDest_SinglePlayer.x = SCREEN_WIDTH / 3 - MenuDest_SinglePlayer.w / 2;
     MenuDest_SinglePlayer.y = SCREEN_HEIGHT / 4 - MenuDest_SinglePlayer.h / 2;

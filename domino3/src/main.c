@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 
 
 
-    game.fontBig = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 40);
-    game.fontSmall = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 20);
+    game.fontBig = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 22);
+    game.fontSmall = loadFont(getAbsolutePath("/assets/ArcadeN.ttf"), 12);
     game.status = GameStatus_MENU;
     game.mode = GameMode_NULL;
 

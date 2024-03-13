@@ -14,11 +14,11 @@
 #define BLACK 0x00, 0x00, 0x00, 0xFF
 #define RED 0xFF, 0x00, 0x00, 0xFF
 
-#define SCREEN_WIDTH 1500
-#define SCREEN_HEIGHT 1000
+#define SCREEN_WIDTH 1100
+#define SCREEN_HEIGHT 600
 #define NO_STDIO_REDIRECT
 
-#define CARD_HEIGHT 60
+#define CARD_HEIGHT 40
 #define CARD_WIDTH (2 * CARD_HEIGHT)
 #define CARD_BORDER 3
 
@@ -40,8 +40,10 @@
 
 #define CARD_SPACER_COLOR BLACK
 
+#define MENU_IMAGES_SIZE 1.0
+
 // GAME
-#define N_CARDS 5
+#define N_CARDS 8
 
 #define AI_THINK_TIME 20
 
