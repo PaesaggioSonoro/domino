@@ -41,7 +41,10 @@
 #define CARD_SPACER_COLOR BLACK
 
 // GAME
-#define N_CARDS 7
+#define N_CARDS 5
+
+#define AI_THINK_TIME 20
+
 
 //derived
 #define CARD_CIRCLES_AREA (CARD_HEIGHT - 2 * CARD_INTERNAL_PADDING)

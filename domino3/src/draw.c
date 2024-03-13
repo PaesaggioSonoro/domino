@@ -37,6 +37,14 @@ void draw(){
             if(game.mode == GameMode_SINGLE_PLAYER){
                 drawInfo(true, "Game Over", true);
                 drawInfo(false, "Press Enter to play again", false);
+            } else {
+                if(game.score1 > game.score2)
+                    drawInfo(true, "You won!", true);
+                else if(game.score1 < game.score2)
+                    drawInfo(true, "You lose!", true);
+                else
+                    drawInfo(true, "Draw", true);
+                drawInfo(false, "Press Enter to play again", false);
             }
             break;
     }

@@ -12,7 +12,6 @@ bool playerTurn = true;
 int inactiveTimer = 0;
 int AIinactiveTimer = 0;
 Card * AImove = NULL;
-#define AIinactiveSteps 50
 #define INACTIVE_TIME 100
 #define MESSAGE(a) game.info = a;
 #define CLEAR_MESSAGE game.info = "";
@@ -48,6 +47,7 @@ void GameLoop(){
                     MenuSinglePlayerSelected = true;
                 }
             } else if(input.enter) {
+                playerTurn = true;
                 if (MenuSinglePlayerSelected) {
                     game.status = GameStatus_ANIMATING;
                     animateMenu(20, 30);
@@ -72,7 +72,7 @@ void GameLoop(){
             }
             if(game.mode == GameMode_WITH_AI && !playerTurn){
                 MESSAGE("AI is thinking");
-                switch ((AIinactiveTimer%AIinactiveSteps)==0?AIinactiveTimer/AIinactiveSteps:-1) {
+                switch ((AIinactiveTimer % AI_THINK_TIME) == 0 ? AIinactiveTimer / AI_THINK_TIME : -1) {
                     case 0:
                         AImove = bestMove();
                         break;
@@ -141,8 +141,10 @@ void GameLoop(){
                             selectedCard->previous = NULL;
 
                             game.score1+= selectedCard->val1 + selectedCard->val2;
-                            if(!checkMoves()){
+                            if(!checkMoves(game.mode == GameMode_SINGLE_PLAYER)){
                                 game.status = GameStatus_GAMEOVER;
+                                AIinactiveTimer = 0;
+                                return;
                             }
                             playerTurn = false;
                         } else {
@@ -207,11 +209,14 @@ void DistributeCards(){
     for(int i = 0; i < N_CARDS*2; i++){
         game.cards[i].val1 = rand() % 6 + 1;
         game.cards[i].val2 = rand() % 6 + 1;
-        game.cards[i].selected = false;
         game.cards[i].ofPlayer = i < N_CARDS;
+        game.cards[i].selected = false;
         game.cards[i].position = CardPosition_HAND;
+        game.cards[i].wrong = false;
         if(i%N_CARDS != 0) game.cards[i-1].next = &game.cards[i];
+        else game.cards[i].previous = NULL;
         if(i!=0 && i!=N_CARDS) game.cards[i].previous = &game.cards[i-1];
+        else game.cards[i].previous = NULL;
     }
 }
 
@@ -239,8 +244,9 @@ static void placeCard(Card * card, bool first){
         game.lastUsed = card;
     }
     card->position = CardPosition_TABLE;
-    if(!checkMoves()){
+    if(!checkMoves((game.mode == GameMode_SINGLE_PLAYER)? true : !playerTurn)){
         game.status = GameStatus_GAMEOVER;
+        AIinactiveTimer = 0;
     }
     int points = card->val1 + card->val2;
     card->ofPlayer? (game.score1+=points) : (game.score2 += points);
@@ -256,17 +262,18 @@ static void wrongCard(Card * card){
     animateCardWrong(100);
 }
 
-static int checkMoves(){
+static int checkMoves(bool ofPlayer){
     if(game.firstUsed == NULL) return N_CARDS;
     int possibleMoves = 0;
-    for(int i = 0; i < N_CARDS; i++){
+    for(int i = 0; i < N_CARDS*2; i++){
         Card current = game.cards[i];
-        if(current.position == CardPosition_HAND && current.ofPlayer && (
+        if(current.position == CardPosition_HAND && current.ofPlayer == ofPlayer && (
         current.val1 == game.firstUsed->val1 || current.val2 == game.firstUsed->val1 ||
         current.val1 == game.lastUsed->val2 || current.val2 == game.lastUsed->val2)) possibleMoves++;
     }
     return possibleMoves;
 }
+
 
 static Card * getFirstHandCard(bool user){
     for(int i = 0; i < N_CARDS*2; i++){
@@ -299,9 +306,9 @@ bool someInput(){
 
 // return highest card in AI hand
 static Card * bestMove(){
-    Card * best = getFirstHandCard(false);
-    int bestValue = best->val1 + best->val2;
-    Card * next = best->next;
+    Card * best = NULL;
+    int bestValue = 0;
+    Card * next = getFirstHandCard(false);
     while(next){
         int newValue = next->val1 + next->val2;
 
@@ -314,6 +321,7 @@ static Card * bestMove(){
         }
         next = next->next;
     }
+    printf("Best move: %d %d\n", best->val1, best->val2);
     return best;
 }
 
@@ -325,30 +333,5 @@ static Card * bestMove(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// a
 
 

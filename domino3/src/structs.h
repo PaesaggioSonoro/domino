@@ -13,7 +13,7 @@ typedef struct Card
 
 typedef struct Game
 {
-    int status;
+    enum GameStatus status;
     enum GameMode mode;
     SDL_Renderer *renderer;
     SDL_Window *win;

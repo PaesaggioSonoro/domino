@@ -22,7 +22,7 @@ static bool someInput();
 static Card * getFirstUserCard();
 static Card * getLastUserCard();
 static Card * getSelectedUserCard();
-static int checkMoves();
+static int checkMoves(bool ofPlayer);
 static void placeCard(Card * card, bool first);
 static void wrongCard(Card * card);
 void DistributeCards();
