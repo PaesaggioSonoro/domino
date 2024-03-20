@@ -14,7 +14,7 @@
 #define BLACK 0x00, 0x00, 0x00, 0xFF
 #define RED 0xFF, 0x00, 0x00, 0xFF
 
-#define SCREEN_WIDTH 1100
+#define SCREEN_WIDTH 1250
 #define SCREEN_HEIGHT 600
 #define NO_STDIO_REDIRECT
 
