@@ -12,33 +12,30 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${OUTPUT_DIR}")
 
-
 # SETUP SDL2
 
 # find_package(SDL2 REQUIRED)   # <<< probably best practice.
-                                # But lets do it manually for now.
-                                #   The downside is that if the development environment
-                                #   differ from others (which they tend to do).
-                                #   Therefore each developer must change the SDL2 paths to their SDL2 folder.
-                                #   ...and libs is probably not compatible with all compilers.
+# But lets do it manually for now.
+#   The downside is that if the development environment
+#   differ from others (which they tend to do).
+#   Therefore each developer must change the SDL2 paths to their SDL2 folder.
+#   ...and libs is probably not compatible with all compilers.
 
 # NOTE: Folders here contain both SDL2 and SDL2_image files.
-set(SDL2_LIB_DIR C:/SDL/SDL2_all/lib)
-set(SDL2_INCLUDE_DIR C:/SDL/SDL2_all/include)
-set(SDL2_LIBRARY C:/SDL/SDL2_all/bin)
+set(SDL2_LIB_DIR ${CMAKE_SOURCE_DIR}/modules/SDL2_all/lib)
+set(SDL2_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/modules/SDL2_all/include)
+set(SDL2_LIBRARY ${CMAKE_SOURCE_DIR}/modules/SDL2_all/bin)
 
 # SETUP INCLUDE AND LINK DIRS:
 
-
 include_directories(
-    ${SDL2_INCLUDE_DIR}
-    ${PROJECT_SOURCE_DIR}/include
+        ${SDL2_INCLUDE_DIR}
+        ${PROJECT_SOURCE_DIR}/include
 )
 
 link_directories(
-    ${SDL2_LIB_DIR}
+        ${SDL2_LIB_DIR}
 )
-
 
 # INCLUDE FILES THAT SHOULD BE COMPILED:
 
@@ -54,11 +51,10 @@ add_executable(${PROJECT_NAME} ${SRC}
         src/game.c
         src/game.h)
 
-
 # LINK PROGRAM
 
 target_link_libraries(
-    ${PROJECT_NAME}
+        ${PROJECT_NAME}
         mingw32
         SDL2main
         SDL2
@@ -66,13 +62,12 @@ target_link_libraries(
         SDL2_ttf
 )
 
-
 # COPY OVER STATIC FILES
 
 message(STATUS "Copying all assets to destination folder...")
 file(
-    COPY assets
-    DESTINATION ${OUTPUT_DIR}
+        COPY assets
+        DESTINATION ${OUTPUT_DIR}
 )
 
 message(STATUS "Copying all dependencies to destination folder...")
@@ -80,7 +75,7 @@ file(GLOB PROJECT_DEPENDENCIES ${SDL2_LIBRARY}/*.dll)
 
 foreach(Dependency IN LISTS PROJECT_DEPENDENCIES)
     file(
-        COPY ${Dependency}
-        DESTINATION ${OUTPUT_DIR}
+            COPY ${Dependency}
+            DESTINATION ${OUTPUT_DIR}
     )
 endforeach()
