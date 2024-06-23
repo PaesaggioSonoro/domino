@@ -1,0 +1,178 @@
+\doxysection{src/draw.c File Reference}
+\hypertarget{draw_8c}{}\label{draw_8c}\index{src/draw.c@{src/draw.c}}
+
+
+This file contains the functions to draw the game on the screen.  
+
+
+{\ttfamily \#include "{}draw.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{draw_8c_aa13653318c21b0e6b86838e6091bfc9a}\label{draw_8c_aa13653318c21b0e6b86838e6091bfc9a} 
+void {\bfseries draw\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Draws the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8c_a5eb1123e9715cf57cada75e51d451d12}{draw\+Rect\+Selection}} (SDL\+\_\+\+Rect rect, int offset, int size, int r, int g, int b, int a)
+\begin{DoxyCompactList}\small\item\em Draws the selection rectangle around the given rectangle. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{draw_8c_ac2b6e88495e47ec57e1017df484b45fe}{lerp}} (float start, float end, float t)
+\begin{DoxyCompactList}\small\item\em Linear interpolation between two values. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{draw_8c_afaa99559abbad31025a7fb1e9daa6d35}{animation\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Utils function to check if something is animating. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8c_a153dd05f15439d67f65c1162e4412314}{draw\+Cards}} (\mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*}cards)
+\begin{DoxyCompactList}\small\item\em Draws the cards on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{draw_8c_a56c5cf8a568cff737ff95520cbe6b405}\label{draw_8c_a56c5cf8a568cff737ff95520cbe6b405} 
+void {\bfseries draw} ()
+\begin{DoxyCompactList}\small\item\em Draws everything on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{draw_8c_a1e892d795309ff53c6e4c8436f88b483}\label{draw_8c_a1e892d795309ff53c6e4c8436f88b483} 
+void {\bfseries init\+Menu} ()
+\begin{DoxyCompactList}\small\item\em Initializes the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8c_a8a54bf62088bc791fcb14390ce41acd5}{animate\+Menu}} (int steps, int wait)
+\begin{DoxyCompactList}\small\item\em Runs the menu animation. \end{DoxyCompactList}\item 
+\Hypertarget{draw_8c_a118be3de733d4ee8bd3d2817fe914161}\label{draw_8c_a118be3de733d4ee8bd3d2817fe914161} 
+void {\bfseries reset\+Menu\+Animation} ()
+\begin{DoxyCompactList}\small\item\em Resets the menu animation data to default values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8c_a278a2ffbb995f7837d4970a4d7435b63}{delay}} (unsigned int frame\+Limit)
+\begin{DoxyCompactList}\small\item\em Puts the program to sleep for a given amount of time between each frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8c_a25af2e8d0a6a28d929c02edcd1b843ec}{animate\+Card\+Wrong}} (int wait)
+\begin{DoxyCompactList}\small\item\em Animates the card when it\textquotesingle{}s placed in the wrong position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{draw_8c_aff83cac87b9145082704e510514ca5f3}\label{draw_8c_aff83cac87b9145082704e510514ca5f3} 
+int {\bfseries Animation\+Card\+Wrong\+Wait} = 0
+\item 
+\Hypertarget{draw_8c_a5ecfb77a182f39211821ae84171439a1}\label{draw_8c_a5ecfb77a182f39211821ae84171439a1} 
+int {\bfseries Animation\+Card\+Wrong\+Current\+Step} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the functions to draw the game on the screen. 
+
+This file contains all the functions and utils to draw everything is on the screen, almost every function inside this file is ran every frame to allow visual feedback to the player and responsiveness to the input 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{draw_8c_a25af2e8d0a6a28d929c02edcd1b843ec}\index{draw.c@{draw.c}!animateCardWrong@{animateCardWrong}}
+\index{animateCardWrong@{animateCardWrong}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{animateCardWrong()}{animateCardWrong()}}
+{\footnotesize\ttfamily \label{draw_8c_a25af2e8d0a6a28d929c02edcd1b843ec} 
+void animate\+Card\+Wrong (\begin{DoxyParamCaption}\item[{int}]{wait}{}\end{DoxyParamCaption})}
+
+
+
+Animates the card when it\textquotesingle{}s placed in the wrong position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait} & Duration of the animation in frames \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8c_a8a54bf62088bc791fcb14390ce41acd5}\index{draw.c@{draw.c}!animateMenu@{animateMenu}}
+\index{animateMenu@{animateMenu}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{animateMenu()}{animateMenu()}}
+{\footnotesize\ttfamily \label{draw_8c_a8a54bf62088bc791fcb14390ce41acd5} 
+void animate\+Menu (\begin{DoxyParamCaption}\item[{int}]{steps}{, }\item[{int}]{wait}{}\end{DoxyParamCaption})}
+
+
+
+Runs the menu animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steps} & Number of steps of the animation \\
+\hline
+{\em wait} & Duration of animation in frames \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8c_afaa99559abbad31025a7fb1e9daa6d35}\index{draw.c@{draw.c}!animationComplete@{animationComplete}}
+\index{animationComplete@{animationComplete}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{animationComplete()}{animationComplete()}}
+{\footnotesize\ttfamily \label{draw_8c_afaa99559abbad31025a7fb1e9daa6d35} 
+bool animation\+Complete (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Utils function to check if something is animating. 
+
+\begin{DoxyReturn}{Returns}
+True if animation running 
+\end{DoxyReturn}
+\Hypertarget{draw_8c_a278a2ffbb995f7837d4970a4d7435b63}\index{draw.c@{draw.c}!delay@{delay}}
+\index{delay@{delay}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{delay()}{delay()}}
+{\footnotesize\ttfamily \label{draw_8c_a278a2ffbb995f7837d4970a4d7435b63} 
+void delay (\begin{DoxyParamCaption}\item[{unsigned int}]{frame\+Limit}{}\end{DoxyParamCaption})}
+
+
+
+Puts the program to sleep for a given amount of time between each frame. 
+
+This function is used to limit the frame rate of the game and avoid using all the CPU to create useless frames 
+\begin{DoxyParams}{Parameters}
+{\em frame\+Limit} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8c_a153dd05f15439d67f65c1162e4412314}\index{draw.c@{draw.c}!drawCards@{drawCards}}
+\index{drawCards@{drawCards}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{drawCards()}{drawCards()}}
+{\footnotesize\ttfamily \label{draw_8c_a153dd05f15439d67f65c1162e4412314} 
+void draw\+Cards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*}}]{cards}{}\end{DoxyParamCaption})}
+
+
+
+Draws the cards on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cards} & Array of cards data to draw \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8c_a5eb1123e9715cf57cada75e51d451d12}\index{draw.c@{draw.c}!drawRectSelection@{drawRectSelection}}
+\index{drawRectSelection@{drawRectSelection}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{drawRectSelection()}{drawRectSelection()}}
+{\footnotesize\ttfamily \label{draw_8c_a5eb1123e9715cf57cada75e51d451d12} 
+void draw\+Rect\+Selection (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect}]{rect}{, }\item[{int}]{offset}{, }\item[{int}]{size}{, }\item[{int}]{r}{, }\item[{int}]{g}{, }\item[{int}]{b}{, }\item[{int}]{a}{}\end{DoxyParamCaption})}
+
+
+
+Draws the selection rectangle around the given rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rect} & Original rectangle to draw selection on \\
+\hline
+{\em offset} & Offset of the selection rectangle \\
+\hline
+{\em size} & Size of the selection rectangle border \\
+\hline
+{\em r} & Red channel \\
+\hline
+{\em g} & Green channel \\
+\hline
+{\em b} & Blue channel \\
+\hline
+{\em a} & Alpha channel \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8c_ac2b6e88495e47ec57e1017df484b45fe}\index{draw.c@{draw.c}!lerp@{lerp}}
+\index{lerp@{lerp}!draw.c@{draw.c}}
+\doxysubsubsection{\texorpdfstring{lerp()}{lerp()}}
+{\footnotesize\ttfamily \label{draw_8c_ac2b6e88495e47ec57e1017df484b45fe} 
+float lerp (\begin{DoxyParamCaption}\item[{float}]{start}{, }\item[{float}]{end}{, }\item[{float}]{t}{}\end{DoxyParamCaption})}
+
+
+
+Linear interpolation between two values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & Start value \\
+\hline
+{\em end} & End value \\
+\hline
+{\em t} & Interpolation amount \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Interpolated value 
+\end{DoxyReturn}

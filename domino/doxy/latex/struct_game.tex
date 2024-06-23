@@ -1,0 +1,137 @@
+\doxysection{Game Struct Reference}
+\hypertarget{struct_game}{}\label{struct_game}\index{Game@{Game}}
+
+
+Struct that holds the game data.  
+
+
+
+
+{\ttfamily \#include $<$structs.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{Game\+Status}} \mbox{\hyperlink{struct_game_ab4a5a693ded15a69183581eb02cb0670}{status}}
+\item 
+enum \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{Game\+Mode}} \mbox{\hyperlink{struct_game_a26ae4de1838d03efdcba62580a845f3f}{mode}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a966da7a60c4ea3ba301e26ccc5efe452}{renderer}}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a885d46b7e650d1d20384739a65e8b425}{win}}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a5ba8d3d6e5d643b7874bba8948187d9c}{font\+Big}}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_af35da4a44a63d5ddc5bd227d9a398454}{font\+Small}}
+\item 
+int \mbox{\hyperlink{struct_game_a2fbc04c06f8781fbaa0c6c6b3fee03b9}{score1}}
+\item 
+int \mbox{\hyperlink{struct_game_a19003dffcafa65c735195a37a300ac7c}{score2}}
+\item 
+struct \mbox{\hyperlink{struct_card}{Card}} \mbox{\hyperlink{struct_game_acf9be57ba2eaf5a6e716d3afad0c866e}{cards}} \mbox{[}\mbox{\hyperlink{defs_8h_a65d63bbd85129a085fb78a9a59cb4e50}{N\+\_\+\+CARDS}} \texorpdfstring{$\ast$}{*}2\mbox{]}
+\item 
+struct \mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a906254b56c087dc7cdd77bc0ee99a5ce}{first\+Used}}
+\item 
+struct \mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_ae7dd249c053e132f79eb339ec44f5d70}{last\+Used}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a65627378647d3a125ae55432f3f569e2}{info}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_ac29b9b848ec61ecb9aeaa98db65717f9}{info2}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_game_a44196e6a5696d10442c29e639437196e}{path}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that holds the game data. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_game_acf9be57ba2eaf5a6e716d3afad0c866e}\index{Game@{Game}!cards@{cards}}
+\index{cards@{cards}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{cards}{cards}}
+{\footnotesize\ttfamily \label{struct_game_acf9be57ba2eaf5a6e716d3afad0c866e} 
+struct \mbox{\hyperlink{struct_card}{Card}} cards\mbox{[}\mbox{\hyperlink{defs_8h_a65d63bbd85129a085fb78a9a59cb4e50}{N\+\_\+\+CARDS}} \texorpdfstring{$\ast$}{*}2\mbox{]}}
+
+Array of cards used in game \Hypertarget{struct_game_a906254b56c087dc7cdd77bc0ee99a5ce}\index{Game@{Game}!firstUsed@{firstUsed}}
+\index{firstUsed@{firstUsed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{firstUsed}{firstUsed}}
+{\footnotesize\ttfamily \label{struct_game_a906254b56c087dc7cdd77bc0ee99a5ce} 
+struct \mbox{\hyperlink{struct_card}{Card}}\texorpdfstring{$\ast$}{*} first\+Used}
+
+Pointer to the first card used \Hypertarget{struct_game_a5ba8d3d6e5d643b7874bba8948187d9c}\index{Game@{Game}!fontBig@{fontBig}}
+\index{fontBig@{fontBig}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{fontBig}{fontBig}}
+{\footnotesize\ttfamily \label{struct_game_a5ba8d3d6e5d643b7874bba8948187d9c} 
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} font\+Big}
+
+Font for the text used in the game (big format) \Hypertarget{struct_game_af35da4a44a63d5ddc5bd227d9a398454}\index{Game@{Game}!fontSmall@{fontSmall}}
+\index{fontSmall@{fontSmall}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{fontSmall}{fontSmall}}
+{\footnotesize\ttfamily \label{struct_game_af35da4a44a63d5ddc5bd227d9a398454} 
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} font\+Small}
+
+Font for the text used in the game (small format) \Hypertarget{struct_game_a65627378647d3a125ae55432f3f569e2}\index{Game@{Game}!info@{info}}
+\index{info@{info}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{info}{info}}
+{\footnotesize\ttfamily \label{struct_game_a65627378647d3a125ae55432f3f569e2} 
+char\texorpdfstring{$\ast$}{*} info}
+
+Info message displayed in the game (big format) \Hypertarget{struct_game_ac29b9b848ec61ecb9aeaa98db65717f9}\index{Game@{Game}!info2@{info2}}
+\index{info2@{info2}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{info2}{info2}}
+{\footnotesize\ttfamily \label{struct_game_ac29b9b848ec61ecb9aeaa98db65717f9} 
+char\texorpdfstring{$\ast$}{*} info2}
+
+Info message displayed in the game (small format) \Hypertarget{struct_game_ae7dd249c053e132f79eb339ec44f5d70}\index{Game@{Game}!lastUsed@{lastUsed}}
+\index{lastUsed@{lastUsed}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{lastUsed}{lastUsed}}
+{\footnotesize\ttfamily \label{struct_game_ae7dd249c053e132f79eb339ec44f5d70} 
+struct \mbox{\hyperlink{struct_card}{Card}}\texorpdfstring{$\ast$}{*} last\+Used}
+
+Pointer to the last card used \Hypertarget{struct_game_a26ae4de1838d03efdcba62580a845f3f}\index{Game@{Game}!mode@{mode}}
+\index{mode@{mode}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \label{struct_game_a26ae4de1838d03efdcba62580a845f3f} 
+enum \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{Game\+Mode}} mode}
+
+Mode of the game \Hypertarget{struct_game_a44196e6a5696d10442c29e639437196e}\index{Game@{Game}!path@{path}}
+\index{path@{path}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily \label{struct_game_a44196e6a5696d10442c29e639437196e} 
+char\texorpdfstring{$\ast$}{*} path}
+
+Path to the executable \Hypertarget{struct_game_a966da7a60c4ea3ba301e26ccc5efe452}\index{Game@{Game}!renderer@{renderer}}
+\index{renderer@{renderer}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily \label{struct_game_a966da7a60c4ea3ba301e26ccc5efe452} 
+SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} renderer}
+
+SDL renderer \Hypertarget{struct_game_a2fbc04c06f8781fbaa0c6c6b3fee03b9}\index{Game@{Game}!score1@{score1}}
+\index{score1@{score1}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{score1}{score1}}
+{\footnotesize\ttfamily \label{struct_game_a2fbc04c06f8781fbaa0c6c6b3fee03b9} 
+int score1}
+
+Score of player 1 \Hypertarget{struct_game_a19003dffcafa65c735195a37a300ac7c}\index{Game@{Game}!score2@{score2}}
+\index{score2@{score2}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{score2}{score2}}
+{\footnotesize\ttfamily \label{struct_game_a19003dffcafa65c735195a37a300ac7c} 
+int score2}
+
+Score of AI \Hypertarget{struct_game_ab4a5a693ded15a69183581eb02cb0670}\index{Game@{Game}!status@{status}}
+\index{status@{status}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{struct_game_ab4a5a693ded15a69183581eb02cb0670} 
+enum \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{Game\+Status}} status}
+
+Status of the game, if playing, menu, etc \Hypertarget{struct_game_a885d46b7e650d1d20384739a65e8b425}\index{Game@{Game}!win@{win}}
+\index{win@{win}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily \label{struct_game_a885d46b7e650d1d20384739a65e8b425} 
+SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} win}
+
+SDL window 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/structs.\+h\end{DoxyCompactItemize}

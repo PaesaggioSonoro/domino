@@ -1,0 +1,35 @@
+\doxysection{game.\+h}
+\hypertarget{game_8h_source}{}\label{game_8h_source}\index{src/game.h@{src/game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}structs.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ CHECK\_INPUTS\ if(someInput())\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_UP\ if(input.up)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_DOWN\ if(input.down)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_LEFT\ if(input.left)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_RIGHT\ if(input.right)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_ENTER\ if(input.enter)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CHECK\_INPUT\_ESC\ if(input.esc)\ waitingNextInput\ =\ true}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_game}{Game}}\ \mbox{\hyperlink{draw_8h_ac6a5ed6191fcf3a5bf0445921feb4f48}{game}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_control}{Control}}\ input;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{draw_8c_afaa99559abbad31025a7fb1e9daa6d35}{animationComplete}}();}
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{draw_8c_a8a54bf62088bc791fcb14390ce41acd5}{animateMenu}}(\textcolor{keywordtype}{int}\ steps,\ \textcolor{keywordtype}{int}\ wait);}
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{draw_8c_a118be3de733d4ee8bd3d2817fe914161}{resetMenuAnimation}}();}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{draw_8c_a25af2e8d0a6a28d929c02edcd1b843ec}{animateCardWrong}}(\textcolor{keywordtype}{int}\ wait);}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{draw_8c_a153dd05f15439d67f65c1162e4412314}{drawCards}}(\mbox{\hyperlink{struct_card}{Card}}*\ cards);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ STATIC}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ someInput();}
+\DoxyCodeLine{00028\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_card}{Card}}\ *\ getFirstUserCard();}
+\DoxyCodeLine{00029\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_card}{Card}}\ *\ getLastUserCard();}
+\DoxyCodeLine{00030\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_card}{Card}}\ *\ getSelectedUserCard();}
+\DoxyCodeLine{00031\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ checkMoves(\textcolor{keywordtype}{bool}\ ofPlayer);}
+\DoxyCodeLine{00032\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ placeCard(\mbox{\hyperlink{struct_card}{Card}}\ *\ card,\ \textcolor{keywordtype}{bool}\ first);}
+\DoxyCodeLine{00033\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ wrongCard(\mbox{\hyperlink{struct_card}{Card}}\ *\ card);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ DistributeCards();}
+\DoxyCodeLine{00039\ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_card}{Card}}\ *\ bestMove();}
+
+\end{DoxyCode}

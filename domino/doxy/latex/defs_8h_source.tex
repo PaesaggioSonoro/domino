@@ -1,0 +1,82 @@
+\doxysection{defs.\+h}
+\hypertarget{defs_8h_source}{}\label{defs_8h_source}\index{src/defs.h@{src/defs.h}}
+\mbox{\hyperlink{defs_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_image.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_timer.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL2/SDL\_ttf.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ COLORS}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ BLACK\ 0x00,\ 0x00,\ 0x00,\ 0xFF}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ RED\ 0xFF,\ 0x00,\ 0x00,\ 0xFF}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ SCREEN\_WIDTH\ 1250}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ SCREEN\_HEIGHT\ 600}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ CARD\_HEIGHT\ 40}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ CARD\_WIDTH\ (2\ *\ CARD\_HEIGHT)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ CARD\_BORDER\ 3}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ CARD\_INTERNAL\_PADDING\ (CARD\_HEIGHT/10)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ CARD\_CIRCLE\_RADIUS\ (CARD\_HEIGHT/10)}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ CARD\_SPACER\_SIZE\ 1}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ CARD\_SPACER\_PADDING\ 6}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ CARDS\_SPACE\_BETWEEN\ 10}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ CARD\_SELECTED\_BORDER\ 5}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ CARD\_SELECTED\_BORDER\_PADDING\ 2}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ CARD\_COLOR\ 0xFE,\ 0xED,\ 0xD0,\ 0xFF}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ CIRCLE\_COLOR\ BLACK}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ CARD\_BORDER\_COLOR\ 0x89,\ 0x84,\ 0x5B,\ 0xFF}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ CARD\_BORDER\_COLOR\_SELECTED\ RED}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ CARD\_SPACER\_COLOR\ BLACK}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ MENU\_IMAGES\_SIZE\ 1.0}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ GAME}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ N\_CARDS\ 8}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ AI\_THINK\_TIME\ 20}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{//derived}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ CARD\_CIRCLES\_AREA\ (CARD\_HEIGHT\ -\/\ 2\ *\ CARD\_INTERNAL\_PADDING)}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ FUNCTIONS}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ enums}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{GameStatus}}}
+\DoxyCodeLine{00137\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a81b5e33de86234bc241b9e1f5fbdb6bd}{GameStatus\_NULL}},\ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a2bf35e569dfed6559c9de5ad393f8666}{GameStatus\_MENU}},\ }
+\DoxyCodeLine{00140\ \ \ \ \ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1af8d29f09b456868ce5e3d148dd690920}{GameStatus\_PLAYING}},\ }
+\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a9f25fd0d061d5c972fb4287c28671b5b}{GameStatus\_GAMEOVER}},\ }
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1af90879da79da1d7f82ea18f1338d9b89}{GameStatus\_ANIMATING}}\ }
+\DoxyCodeLine{00143\ \};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{GameMode}}}
+\DoxyCodeLine{00150\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589dea9684c0d0837eea8b3aca17e15f7b4013}{GameMode\_SINGLE\_PLAYER}},\ }
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589deac03ae1cdd7c1bb44eba665c2b2713273}{GameMode\_WITH\_AI}},\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589deaccc2655d1d0d2d1b2cf1736e08f85629}{GameMode\_NULL}}\ }
+\DoxyCodeLine{00154\ \};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00160\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{CardPosition}}\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a3c6606ab6a0809caf59c73901751195d}{CardPosition\_TABLE}},\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a9df11ef7e750c0842af3830d42b7edfb}{CardPosition\_HAND}},\ }
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40af5cf6a2275a2d9d3bf7041101170f74e}{CardPosition\_ChoosingR}},\ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a19082ff4c40ea882c634fcf653a13112}{CardPosition\_ChoosingL}}\ }
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+
+\end{DoxyCode}

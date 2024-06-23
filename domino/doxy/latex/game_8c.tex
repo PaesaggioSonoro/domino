@@ -1,0 +1,224 @@
+\doxysection{src/game.c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{src/game.c@{src/game.c}}
+{\ttfamily \#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game_8c_ae2d6849564d28155ed552d7e9d75e539}{INACTIVE\+\_\+\+TIME}}~100
+\begin{DoxyCompactList}\small\item\em Frames needed to consider player "{}inactive"{}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{game_8c_ab7e15adcacba79b4d1f884bd549202ae}{MESSAGE}}(a)~game.\+info = a;
+\begin{DoxyCompactList}\small\item\em Set an info message. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{game_8c_a0746d0c1703f0c42c79bbc990ab83dcd}{CLEAR\+\_\+\+MESSAGE}}~game.\+info = "{}"{};
+\begin{DoxyCompactList}\small\item\em Clear the info message. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{game_8c_a45d0813bb3465e8e9477fa569a9705bd}{INACTIVE\+\_\+\+MESSAGE}}(a,  t)~if(\mbox{\hyperlink{game_8c_a20ac658d163644c11b04b251ff3bcade}{inactive\+Timer}} $>$ t) game.\+info = a;
+\begin{DoxyCompactList}\small\item\em Set an info message if player is inactive. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{game_8c_af1519352da7a763efc8087464a549762}{INACTIVE\+\_\+\+MESSAGE2}}(a,  t)~if(\mbox{\hyperlink{game_8c_a20ac658d163644c11b04b251ff3bcade}{inactive\+Timer}} $>$ t) game.\+info2 = a;
+\begin{DoxyCompactList}\small\item\em Set a second info message if player is still inactive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8c_a1ccba604c34743e18775c4c72ff36948}{Game\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Main game loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8c_ad85c1dbfb1c50d1e52cac1f0942c862c}{Distribute\+Cards}} ()
+\begin{DoxyCompactList}\small\item\em Shuffles and distributes the cards to the players. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_aeae2e9860596c962ef3286b079c10db8}{some\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Checks if there is some input from the user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game_8c_a5e549677a55164c4155c752bba3a4308}{next\+Status}} = \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a81b5e33de86234bc241b9e1f5fbdb6bd}{Game\+Status\+\_\+\+NULL}}
+\begin{DoxyCompactList}\small\item\em When changing status, the next frame will be this status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_ad4b4c96ebbf664eac1855077d57419ac}{Menu\+Single\+Player\+Selected}} = false
+\item 
+bool \mbox{\hyperlink{game_8c_ae2e98ea3c5e2960a5f62886d9ff54c2a}{Menu\+With\+AISelected}} = false
+\begin{DoxyCompactList}\small\item\em True if the single player mode is selected in the menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a0655a24dc57b18f4822919746ad9deb0}{Selecting\+From\+Table}} = false
+\begin{DoxyCompactList}\small\item\em True if the multiplayer mode is selected in the menu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a055fb445094e56925da7ae1d17c36008}{player\+Turn}} = true
+\begin{DoxyCompactList}\small\item\em True if the player is selecting a card from the table. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_a20ac658d163644c11b04b251ff3bcade}{inactive\+Timer}} = 0
+\begin{DoxyCompactList}\small\item\em True if it\textquotesingle{}s the player\textquotesingle{}s turn. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_ab856a85a29c80b8e450b98042aaee7dd}{AIinactive\+Timer}} = 0
+\begin{DoxyCompactList}\small\item\em Timer for user inactivity and consequent help messages. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game_8c_a7931babf6b04e9ab1a2cd941878fc374}{AImove}} = NULL
+\begin{DoxyCompactList}\small\item\em Timer for AI "{}think"{} delays. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = false
+\begin{DoxyCompactList}\small\item\em True if the game is waiting for the next player input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game_8c_a0746d0c1703f0c42c79bbc990ab83dcd}\index{game.c@{game.c}!CLEAR\_MESSAGE@{CLEAR\_MESSAGE}}
+\index{CLEAR\_MESSAGE@{CLEAR\_MESSAGE}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{CLEAR\_MESSAGE}{CLEAR\_MESSAGE}}
+{\footnotesize\ttfamily \label{game_8c_a0746d0c1703f0c42c79bbc990ab83dcd} 
+\#define CLEAR\+\_\+\+MESSAGE~game.\+info = "{}"{};}
+
+
+
+Clear the info message. 
+
+\Hypertarget{game_8c_a45d0813bb3465e8e9477fa569a9705bd}\index{game.c@{game.c}!INACTIVE\_MESSAGE@{INACTIVE\_MESSAGE}}
+\index{INACTIVE\_MESSAGE@{INACTIVE\_MESSAGE}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{INACTIVE\_MESSAGE}{INACTIVE\_MESSAGE}}
+{\footnotesize\ttfamily \label{game_8c_a45d0813bb3465e8e9477fa569a9705bd} 
+\#define INACTIVE\+\_\+\+MESSAGE(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{t}{}\end{DoxyParamCaption})~if(\mbox{\hyperlink{game_8c_a20ac658d163644c11b04b251ff3bcade}{inactive\+Timer}} $>$ t) game.\+info = a;}
+
+
+
+Set an info message if player is inactive. 
+
+\Hypertarget{game_8c_af1519352da7a763efc8087464a549762}\index{game.c@{game.c}!INACTIVE\_MESSAGE2@{INACTIVE\_MESSAGE2}}
+\index{INACTIVE\_MESSAGE2@{INACTIVE\_MESSAGE2}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{INACTIVE\_MESSAGE2}{INACTIVE\_MESSAGE2}}
+{\footnotesize\ttfamily \label{game_8c_af1519352da7a763efc8087464a549762} 
+\#define INACTIVE\+\_\+\+MESSAGE2(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{t}{}\end{DoxyParamCaption})~if(\mbox{\hyperlink{game_8c_a20ac658d163644c11b04b251ff3bcade}{inactive\+Timer}} $>$ t) game.\+info2 = a;}
+
+
+
+Set a second info message if player is still inactive. 
+
+\Hypertarget{game_8c_ae2d6849564d28155ed552d7e9d75e539}\index{game.c@{game.c}!INACTIVE\_TIME@{INACTIVE\_TIME}}
+\index{INACTIVE\_TIME@{INACTIVE\_TIME}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{INACTIVE\_TIME}{INACTIVE\_TIME}}
+{\footnotesize\ttfamily \label{game_8c_ae2d6849564d28155ed552d7e9d75e539} 
+\#define INACTIVE\+\_\+\+TIME~100}
+
+
+
+Frames needed to consider player "{}inactive"{}. 
+
+\doxylink{struct_card}{Card} that the AI is moving. \Hypertarget{game_8c_ab7e15adcacba79b4d1f884bd549202ae}\index{game.c@{game.c}!MESSAGE@{MESSAGE}}
+\index{MESSAGE@{MESSAGE}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{MESSAGE}{MESSAGE}}
+{\footnotesize\ttfamily \label{game_8c_ab7e15adcacba79b4d1f884bd549202ae} 
+\#define MESSAGE(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})~game.\+info = a;}
+
+
+
+Set an info message. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_ad85c1dbfb1c50d1e52cac1f0942c862c}\index{game.c@{game.c}!DistributeCards@{DistributeCards}}
+\index{DistributeCards@{DistributeCards}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{DistributeCards()}{DistributeCards()}}
+{\footnotesize\ttfamily \label{game_8c_ad85c1dbfb1c50d1e52cac1f0942c862c} 
+void Distribute\+Cards (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Shuffles and distributes the cards to the players. 
+
+Creates the array of randomized card values divided by the number of players \Hypertarget{game_8c_a1ccba604c34743e18775c4c72ff36948}\index{game.c@{game.c}!GameLoop@{GameLoop}}
+\index{GameLoop@{GameLoop}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{GameLoop()}{GameLoop()}}
+{\footnotesize\ttfamily \label{game_8c_a1ccba604c34743e18775c4c72ff36948} 
+void Game\+Loop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Main game loop. 
+
+This function is the main game loop, it handles the game status and the game logic \Hypertarget{game_8c_aeae2e9860596c962ef3286b079c10db8}\index{game.c@{game.c}!someInput@{someInput}}
+\index{someInput@{someInput}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{someInput()}{someInput()}}
+{\footnotesize\ttfamily \label{game_8c_aeae2e9860596c962ef3286b079c10db8} 
+bool some\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if there is some input from the user. 
+
+Used to avoid infinite ticks and too fast animation between possible moves. Usually used to wait for the user to release the already pressed key before continuing to the next action \begin{DoxyReturn}{Returns}
+True if there is some input 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game_8c_ab856a85a29c80b8e450b98042aaee7dd}\index{game.c@{game.c}!AIinactiveTimer@{AIinactiveTimer}}
+\index{AIinactiveTimer@{AIinactiveTimer}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{AIinactiveTimer}{AIinactiveTimer}}
+{\footnotesize\ttfamily \label{game_8c_ab856a85a29c80b8e450b98042aaee7dd} 
+int AIinactive\+Timer = 0}
+
+
+
+Timer for user inactivity and consequent help messages. 
+
+\Hypertarget{game_8c_a7931babf6b04e9ab1a2cd941878fc374}\index{game.c@{game.c}!AImove@{AImove}}
+\index{AImove@{AImove}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{AImove}{AImove}}
+{\footnotesize\ttfamily \label{game_8c_a7931babf6b04e9ab1a2cd941878fc374} 
+\mbox{\hyperlink{struct_card}{Card}}\texorpdfstring{$\ast$}{*} AImove = NULL}
+
+
+
+Timer for AI "{}think"{} delays. 
+
+\Hypertarget{game_8c_a20ac658d163644c11b04b251ff3bcade}\index{game.c@{game.c}!inactiveTimer@{inactiveTimer}}
+\index{inactiveTimer@{inactiveTimer}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{inactiveTimer}{inactiveTimer}}
+{\footnotesize\ttfamily \label{game_8c_a20ac658d163644c11b04b251ff3bcade} 
+int inactive\+Timer = 0}
+
+
+
+True if it\textquotesingle{}s the player\textquotesingle{}s turn. 
+
+\Hypertarget{game_8c_ad4b4c96ebbf664eac1855077d57419ac}\index{game.c@{game.c}!MenuSinglePlayerSelected@{MenuSinglePlayerSelected}}
+\index{MenuSinglePlayerSelected@{MenuSinglePlayerSelected}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{MenuSinglePlayerSelected}{MenuSinglePlayerSelected}}
+{\footnotesize\ttfamily \label{game_8c_ad4b4c96ebbf664eac1855077d57419ac} 
+bool Menu\+Single\+Player\+Selected = false}
+
+True if the single player mode is selected in the menu \Hypertarget{game_8c_ae2e98ea3c5e2960a5f62886d9ff54c2a}\index{game.c@{game.c}!MenuWithAISelected@{MenuWithAISelected}}
+\index{MenuWithAISelected@{MenuWithAISelected}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{MenuWithAISelected}{MenuWithAISelected}}
+{\footnotesize\ttfamily \label{game_8c_ae2e98ea3c5e2960a5f62886d9ff54c2a} 
+bool Menu\+With\+AISelected = false}
+
+
+
+True if the single player mode is selected in the menu. 
+
+True if the multiplayer mode is selected in the menu \Hypertarget{game_8c_a5e549677a55164c4155c752bba3a4308}\index{game.c@{game.c}!nextStatus@{nextStatus}}
+\index{nextStatus@{nextStatus}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{nextStatus}{nextStatus}}
+{\footnotesize\ttfamily \label{game_8c_a5e549677a55164c4155c752bba3a4308} 
+int next\+Status = \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a81b5e33de86234bc241b9e1f5fbdb6bd}{Game\+Status\+\_\+\+NULL}}}
+
+
+
+When changing status, the next frame will be this status. 
+
+\Hypertarget{game_8c_a055fb445094e56925da7ae1d17c36008}\index{game.c@{game.c}!playerTurn@{playerTurn}}
+\index{playerTurn@{playerTurn}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{playerTurn}{playerTurn}}
+{\footnotesize\ttfamily \label{game_8c_a055fb445094e56925da7ae1d17c36008} 
+bool player\+Turn = true}
+
+
+
+True if the player is selecting a card from the table. 
+
+\Hypertarget{game_8c_a0655a24dc57b18f4822919746ad9deb0}\index{game.c@{game.c}!SelectingFromTable@{SelectingFromTable}}
+\index{SelectingFromTable@{SelectingFromTable}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{SelectingFromTable}{SelectingFromTable}}
+{\footnotesize\ttfamily \label{game_8c_a0655a24dc57b18f4822919746ad9deb0} 
+bool Selecting\+From\+Table = false}
+
+
+
+True if the multiplayer mode is selected in the menu. 
+
+\Hypertarget{game_8c_ae238d2d9953da5f7541f07f60e62e28f}\index{game.c@{game.c}!waitingNextInput@{waitingNextInput}}
+\index{waitingNextInput@{waitingNextInput}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{waitingNextInput}{waitingNextInput}}
+{\footnotesize\ttfamily \label{game_8c_ae238d2d9953da5f7541f07f60e62e28f} 
+bool waiting\+Next\+Input = false}
+
+
+
+True if the game is waiting for the next player input. 
+

@@ -1,4 +1,0 @@
-#include "structs.h"
-
-extern Game game;
-extern void initMenu(void);

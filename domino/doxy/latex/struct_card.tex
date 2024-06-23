@@ -1,0 +1,89 @@
+\doxysection{Card Struct Reference}
+\hypertarget{struct_card}{}\label{struct_card}\index{Card@{Card}}
+
+
+Struct that holds the card data.  
+
+
+
+
+{\ttfamily \#include $<$structs.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_card_a948167f8090ebc248e42325a827e9371}{val1}}
+\item 
+int \mbox{\hyperlink{struct_card_acc3748d7169a359b540e60b40b6a8956}{val2}}
+\item 
+bool \mbox{\hyperlink{struct_card_a6c16ceff2916c70d3004b2c6619216ac}{of\+Player}}
+\item 
+bool \mbox{\hyperlink{struct_card_a9ee682957ef18956fbe33afe9b6222fa}{selected}}
+\item 
+struct \mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_card_a688ade177befd4d37820a02f8589ecda}{next}}
+\item 
+struct \mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_card_a718a74adfb568cfb19846920edb0103c}{previous}}
+\item 
+bool \mbox{\hyperlink{struct_card_a75f5cb042d39331fb59c5908238fc178}{wrong}}
+\item 
+enum \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{Card\+Position}} \mbox{\hyperlink{struct_card_ab4776f71aa76f9cd79a264f9bebf8edd}{position}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct that holds the card data. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_card_a688ade177befd4d37820a02f8589ecda}\index{Card@{Card}!next@{next}}
+\index{next@{next}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily \label{struct_card_a688ade177befd4d37820a02f8589ecda} 
+struct \mbox{\hyperlink{struct_card}{Card}}\texorpdfstring{$\ast$}{*} next}
+
+Pointer to the next card in the context (table or hand) \Hypertarget{struct_card_a6c16ceff2916c70d3004b2c6619216ac}\index{Card@{Card}!ofPlayer@{ofPlayer}}
+\index{ofPlayer@{ofPlayer}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{ofPlayer}{ofPlayer}}
+{\footnotesize\ttfamily \label{struct_card_a6c16ceff2916c70d3004b2c6619216ac} 
+bool of\+Player}
+
+If the card is of the player \Hypertarget{struct_card_ab4776f71aa76f9cd79a264f9bebf8edd}\index{Card@{Card}!position@{position}}
+\index{position@{position}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{struct_card_ab4776f71aa76f9cd79a264f9bebf8edd} 
+enum \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{Card\+Position}} position}
+
+Position of the card (table or hand) \Hypertarget{struct_card_a718a74adfb568cfb19846920edb0103c}\index{Card@{Card}!previous@{previous}}
+\index{previous@{previous}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{previous}{previous}}
+{\footnotesize\ttfamily \label{struct_card_a718a74adfb568cfb19846920edb0103c} 
+struct \mbox{\hyperlink{struct_card}{Card}}\texorpdfstring{$\ast$}{*} previous}
+
+Pointer to the previous card in the context (table or hand) \Hypertarget{struct_card_a9ee682957ef18956fbe33afe9b6222fa}\index{Card@{Card}!selected@{selected}}
+\index{selected@{selected}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{selected}{selected}}
+{\footnotesize\ttfamily \label{struct_card_a9ee682957ef18956fbe33afe9b6222fa} 
+bool selected}
+
+If the card is selected \Hypertarget{struct_card_a948167f8090ebc248e42325a827e9371}\index{Card@{Card}!val1@{val1}}
+\index{val1@{val1}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{val1}{val1}}
+{\footnotesize\ttfamily \label{struct_card_a948167f8090ebc248e42325a827e9371} 
+int val1}
+
+First value of the card \Hypertarget{struct_card_acc3748d7169a359b540e60b40b6a8956}\index{Card@{Card}!val2@{val2}}
+\index{val2@{val2}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{val2}{val2}}
+{\footnotesize\ttfamily \label{struct_card_acc3748d7169a359b540e60b40b6a8956} 
+int val2}
+
+Second value of the card \Hypertarget{struct_card_a75f5cb042d39331fb59c5908238fc178}\index{Card@{Card}!wrong@{wrong}}
+\index{wrong@{wrong}!Card@{Card}}
+\doxysubsubsection{\texorpdfstring{wrong}{wrong}}
+{\footnotesize\ttfamily \label{struct_card_a75f5cb042d39331fb59c5908238fc178} 
+bool wrong}
+
+If the player placed the card in the wrong place (will stay true during the "{}wrong"{} animation) 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/structs.\+h\end{DoxyCompactItemize}

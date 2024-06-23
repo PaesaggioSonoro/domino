@@ -1,0 +1,41 @@
+\doxysection{structs.\+h}
+\hypertarget{structs_8h_source}{}\label{structs_8h_source}\index{src/structs.h@{src/structs.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{defs_8h}{defs.h}}"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_card_a948167f8090ebc248e42325a827e9371}{val1}},\ \mbox{\hyperlink{struct_card_acc3748d7169a359b540e60b40b6a8956}{val2}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_card_a6c16ceff2916c70d3004b2c6619216ac}{ofPlayer}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_card_a9ee682957ef18956fbe33afe9b6222fa}{selected}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}\ *\ \mbox{\hyperlink{struct_card_a688ade177befd4d37820a02f8589ecda}{next}};\ \textcolor{comment}{//\ next\ card\ on\ table\ or\ hand\ (based\ on\ "{}used"{})}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}\ *\ \mbox{\hyperlink{struct_card_a718a74adfb568cfb19846920edb0103c}{previous}};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_card_a75f5cb042d39331fb59c5908238fc178}{wrong}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{CardPosition}}\ \mbox{\hyperlink{struct_card_ab4776f71aa76f9cd79a264f9bebf8edd}{position}};}
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{struct_card}{Card}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_game}{Game}}}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{GameStatus}}\ \mbox{\hyperlink{struct_game_ab4a5a693ded15a69183581eb02cb0670}{status}};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{GameMode}}\ \mbox{\hyperlink{struct_game_a26ae4de1838d03efdcba62580a845f3f}{mode}};}
+\DoxyCodeLine{00070\ \ \ \ \ SDL\_Renderer\ *\mbox{\hyperlink{struct_game_a966da7a60c4ea3ba301e26ccc5efe452}{renderer}};}
+\DoxyCodeLine{00071\ \ \ \ \ SDL\_Window\ *\mbox{\hyperlink{struct_game_a885d46b7e650d1d20384739a65e8b425}{win}};}
+\DoxyCodeLine{00072\ \ \ \ \ TTF\_Font\ *\mbox{\hyperlink{struct_game_a5ba8d3d6e5d643b7874bba8948187d9c}{fontBig}};}
+\DoxyCodeLine{00073\ \ \ \ \ TTF\_Font\ *\mbox{\hyperlink{struct_game_af35da4a44a63d5ddc5bd227d9a398454}{fontSmall}};}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_game_a2fbc04c06f8781fbaa0c6c6b3fee03b9}{score1}};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_game_a19003dffcafa65c735195a37a300ac7c}{score2}};}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}\ \mbox{\hyperlink{struct_game_acf9be57ba2eaf5a6e716d3afad0c866e}{cards}}[\mbox{\hyperlink{defs_8h_a65d63bbd85129a085fb78a9a59cb4e50}{N\_CARDS}}*2];}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}\ *\mbox{\hyperlink{struct_game_a906254b56c087dc7cdd77bc0ee99a5ce}{firstUsed}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_card}{Card}}\ *\mbox{\hyperlink{struct_game_ae7dd249c053e132f79eb339ec44f5d70}{lastUsed}};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_game_a65627378647d3a125ae55432f3f569e2}{info}};}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_game_ac29b9b848ec61ecb9aeaa98db65717f9}{info2}};}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{struct_game_a44196e6a5696d10442c29e639437196e}{path}};}
+\DoxyCodeLine{00082\ \}\ \mbox{\hyperlink{struct_game}{Game}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_control}{Control}}}
+\DoxyCodeLine{00101\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_control_a53fd293fef6a860c8cb2769026e5d4b6}{up}},\ \mbox{\hyperlink{struct_control_aac8fc1be53dcc0753b735f20510be9d4}{down}},\ \mbox{\hyperlink{struct_control_ad8f5e19e19f12974c9713e920ec54331}{left}},\ \mbox{\hyperlink{struct_control_a2f54f8b71f0d765e2b7dbd9a8b9774ff}{right}},\ \mbox{\hyperlink{struct_control_a4d86b645c394fabe7007f9a2839a33da}{enter}},\ \mbox{\hyperlink{struct_control_a3753a1366fa67994c9b35cdac51ca33f}{esc}};}
+\DoxyCodeLine{00103\ \}\ \mbox{\hyperlink{struct_control}{Control}};}
+
+\end{DoxyCode}

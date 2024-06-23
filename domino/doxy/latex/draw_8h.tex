@@ -1,0 +1,129 @@
+\doxysection{src/draw.h File Reference}
+\hypertarget{draw_8h}{}\label{draw_8h}\index{src/draw.h@{src/draw.h}}
+
+
+This file contains the definitions of the draw functions.  
+
+
+{\ttfamily \#include "{}structs.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{draw_8h_a0e406e917c6e51e7b7579dd4b61e41fe}{draw\+String}} (char \texorpdfstring{$\ast$}{*}text, int x, int y, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int centerX, int centerY)
+\begin{DoxyCompactList}\small\item\em Draws text on the screen at the desired location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8h_a501a6b429c43b38155868fd86fccfa28}{draw\+Tessera\+Struct}} (\mbox{\hyperlink{struct_card}{Card}} t, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a single card on the screen at the desired location. \end{DoxyCompactList}\item 
+\Hypertarget{draw_8h_ac879cc6072d94dd251f0d5124cadc074}\label{draw_8h_ac879cc6072d94dd251f0d5124cadc074} 
+void {\bfseries draw\+Score} (int score1, int score2)
+\begin{DoxyCompactList}\small\item\em Draws the game board on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{draw_8h_afc84e91f89912156cd973a3699f19cc7}{draw\+Info}} (bool up, char \texorpdfstring{$\ast$}{*}text, bool big)
+\begin{DoxyCompactList}\small\item\em Draws an info text on the screen. \end{DoxyCompactList}\item 
+\Hypertarget{draw_8h_a1add4742a9a9a0c0bb2d8e9c09995f19}\label{draw_8h_a1add4742a9a9a0c0bb2d8e9c09995f19} 
+char \texorpdfstring{$\ast$}{*} {\bfseries get\+Absolute\+Path} (char \texorpdfstring{$\ast$}{*}relative\+Path)
+\begin{DoxyCompactList}\small\item\em Converts a relative path to an absolute path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game}{Game}} \mbox{\hyperlink{draw_8h_ac6a5ed6191fcf3a5bf0445921feb4f48}{game}}
+\item 
+bool \mbox{\hyperlink{draw_8h_ad4b4c96ebbf664eac1855077d57419ac}{Menu\+Single\+Player\+Selected}}
+\item 
+bool \mbox{\hyperlink{draw_8h_ae2e98ea3c5e2960a5f62886d9ff54c2a}{Menu\+With\+AISelected}}
+\begin{DoxyCompactList}\small\item\em True if the single player mode is selected in the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definitions of the draw functions. 
+
+See \doxylink{draw_8c}{draw.\+c} for details on draw 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{draw_8h_afc84e91f89912156cd973a3699f19cc7}\index{draw.h@{draw.h}!drawInfo@{drawInfo}}
+\index{drawInfo@{drawInfo}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{drawInfo()}{drawInfo()}}
+{\footnotesize\ttfamily \label{draw_8h_afc84e91f89912156cd973a3699f19cc7} 
+void draw\+Info (\begin{DoxyParamCaption}\item[{bool}]{up}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{bool}]{big}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Draws an info text on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+{\em text} & \\
+\hline
+{\em big} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8h_a0e406e917c6e51e7b7579dd4b61e41fe}\index{draw.h@{draw.h}!drawString@{drawString}}
+\index{drawString@{drawString}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{drawString()}{drawString()}}
+{\footnotesize\ttfamily \label{draw_8h_a0e406e917c6e51e7b7579dd4b61e41fe} 
+void draw\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{centerX}{, }\item[{int}]{centerY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Draws text on the screen at the desired location. 
+
+Relies on SDL2\+\_\+ttf library to render text 
+\begin{DoxyParams}{Parameters}
+{\em text} & Pointer to the text to be rendered \\
+\hline
+{\em x} & X coordinate of the text \\
+\hline
+{\em y} & Y coordinate of the text \\
+\hline
+{\em font} & Pointer to the font to be used \\
+\hline
+{\em centerX} & If equal to 1, the text will be centered on the x axis \\
+\hline
+{\em centerY} & If equal to 1, the text will be centered on the y axis \\
+\hline
+\end{DoxyParams}
+\Hypertarget{draw_8h_a501a6b429c43b38155868fd86fccfa28}\index{draw.h@{draw.h}!drawTesseraStruct@{drawTesseraStruct}}
+\index{drawTesseraStruct@{drawTesseraStruct}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{drawTesseraStruct()}{drawTesseraStruct()}}
+{\footnotesize\ttfamily \label{draw_8h_a501a6b429c43b38155868fd86fccfa28} 
+void draw\+Tessera\+Struct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_card}{Card}}}]{t}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Draws a single card on the screen at the desired location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Data of card to be drawn \\
+\hline
+{\em x} & X coordinate of the card \\
+\hline
+{\em y} & Y coordinate of the card \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{draw_8h_ac6a5ed6191fcf3a5bf0445921feb4f48}\index{draw.h@{draw.h}!game@{game}}
+\index{game@{game}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{game}{game}}
+{\footnotesize\ttfamily \label{draw_8h_ac6a5ed6191fcf3a5bf0445921feb4f48} 
+\mbox{\hyperlink{struct_game}{Game}} game\hspace{0.3cm}{\ttfamily [extern]}}
+
+\doxylink{struct_game}{Game} struct that contains all the game data \Hypertarget{draw_8h_ad4b4c96ebbf664eac1855077d57419ac}\index{draw.h@{draw.h}!MenuSinglePlayerSelected@{MenuSinglePlayerSelected}}
+\index{MenuSinglePlayerSelected@{MenuSinglePlayerSelected}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{MenuSinglePlayerSelected}{MenuSinglePlayerSelected}}
+{\footnotesize\ttfamily \label{draw_8h_ad4b4c96ebbf664eac1855077d57419ac} 
+bool Menu\+Single\+Player\+Selected\hspace{0.3cm}{\ttfamily [extern]}}
+
+True if the single player mode is selected in the menu \Hypertarget{draw_8h_ae2e98ea3c5e2960a5f62886d9ff54c2a}\index{draw.h@{draw.h}!MenuWithAISelected@{MenuWithAISelected}}
+\index{MenuWithAISelected@{MenuWithAISelected}!draw.h@{draw.h}}
+\doxysubsubsection{\texorpdfstring{MenuWithAISelected}{MenuWithAISelected}}
+{\footnotesize\ttfamily \label{draw_8h_ae2e98ea3c5e2960a5f62886d9ff54c2a} 
+bool Menu\+With\+AISelected\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+True if the single player mode is selected in the menu. 
+
+True if the multiplayer mode is selected in the menu 

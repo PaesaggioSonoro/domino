@@ -1,0 +1,64 @@
+\doxysection{src/tessera.c File Reference}
+\hypertarget{tessera_8c}{}\label{tessera_8c}\index{src/tessera.c@{src/tessera.c}}
+{\ttfamily \#include "{}tessera.\+h"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tessera_8c_af9d23a302c24f0ec934688542ce94817}{corners}} \{ \mbox{\hyperlink{tessera_8c_af9d23a302c24f0ec934688542ce94817a0e793500a63ffa575b9b712ca3bc9851}{TWO}}
+, \mbox{\hyperlink{tessera_8c_af9d23a302c24f0ec934688542ce94817ab1d5eac4b1dca480c8056eaea7663b7a}{ALL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tessera_8c_a7b00fb1c0b9f03f8d64090b838f2e298}{draw\+Tessera\+Val}} (int val1, int val2, int x, int y, bool selected, bool wrong)
+\item 
+void \mbox{\hyperlink{tessera_8c_a501a6b429c43b38155868fd86fccfa28}{draw\+Tessera\+Struct}} (\mbox{\hyperlink{struct_card}{Card}} t, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a single card on the screen at the desired location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{tessera_8c_af9d23a302c24f0ec934688542ce94817}\index{tessera.c@{tessera.c}!corners@{corners}}
+\index{corners@{corners}!tessera.c@{tessera.c}}
+\doxysubsubsection{\texorpdfstring{corners}{corners}}
+{\footnotesize\ttfamily \label{tessera_8c_af9d23a302c24f0ec934688542ce94817} 
+enum \mbox{\hyperlink{tessera_8c_af9d23a302c24f0ec934688542ce94817}{corners}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO@{TWO}!tessera.c@{tessera.c}}\index{tessera.c@{tessera.c}!TWO@{TWO}}}\Hypertarget{tessera_8c_af9d23a302c24f0ec934688542ce94817a0e793500a63ffa575b9b712ca3bc9851}\label{tessera_8c_af9d23a302c24f0ec934688542ce94817} 
+TWO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!tessera.c@{tessera.c}}\index{tessera.c@{tessera.c}!ALL@{ALL}}}\Hypertarget{tessera_8c_af9d23a302c24f0ec934688542ce94817ab1d5eac4b1dca480c8056eaea7663b7a}\label{tessera_8c_af9d23a302c24f0ec934688542ce94817} 
+ALL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tessera_8c_a501a6b429c43b38155868fd86fccfa28}\index{tessera.c@{tessera.c}!drawTesseraStruct@{drawTesseraStruct}}
+\index{drawTesseraStruct@{drawTesseraStruct}!tessera.c@{tessera.c}}
+\doxysubsubsection{\texorpdfstring{drawTesseraStruct()}{drawTesseraStruct()}}
+{\footnotesize\ttfamily \label{tessera_8c_a501a6b429c43b38155868fd86fccfa28} 
+void draw\+Tessera\+Struct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_card}{Card}}}]{t}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Draws a single card on the screen at the desired location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Data of card to be drawn \\
+\hline
+{\em x} & X coordinate of the card \\
+\hline
+{\em y} & Y coordinate of the card \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tessera_8c_a7b00fb1c0b9f03f8d64090b838f2e298}\index{tessera.c@{tessera.c}!drawTesseraVal@{drawTesseraVal}}
+\index{drawTesseraVal@{drawTesseraVal}!tessera.c@{tessera.c}}
+\doxysubsubsection{\texorpdfstring{drawTesseraVal()}{drawTesseraVal()}}
+{\footnotesize\ttfamily \label{tessera_8c_a7b00fb1c0b9f03f8d64090b838f2e298} 
+void draw\+Tessera\+Val (\begin{DoxyParamCaption}\item[{int}]{val1}{, }\item[{int}]{val2}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{bool}]{selected}{, }\item[{bool}]{wrong}{}\end{DoxyParamCaption})}
+

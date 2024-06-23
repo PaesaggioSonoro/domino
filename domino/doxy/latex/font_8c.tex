@@ -1,0 +1,108 @@
+\doxysection{src/font.c File Reference}
+\hypertarget{font_8c}{}\label{font_8c}\index{src/font.c@{src/font.c}}
+{\ttfamily \#include "{}font.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{font_8c_a7c73e5779cc80514a1178611fcf026cd}{load\+Font}} (char \texorpdfstring{$\ast$}{*}name, int size)
+\begin{DoxyCompactList}\small\item\em Loads the font with the specified size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{font_8c_ad5586264a42819b567898cff66287f6e}{close\+Font}} (TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font)
+\begin{DoxyCompactList}\small\item\em Closes the font and frees the memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{font_8c_a0e406e917c6e51e7b7579dd4b61e41fe}{draw\+String}} (char \texorpdfstring{$\ast$}{*}text, int x, int y, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}font, int centerX, int centerY)
+\begin{DoxyCompactList}\small\item\em Draws text on the screen at the desired location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{font_8c_ac879cc6072d94dd251f0d5124cadc074}{draw\+Score}} (int score1, int score2)
+\begin{DoxyCompactList}\small\item\em Draws the game board on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{font_8c_afc84e91f89912156cd973a3699f19cc7}{draw\+Info}} (bool up, char \texorpdfstring{$\ast$}{*}text, bool big)
+\begin{DoxyCompactList}\small\item\em Draws an info text on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{font_8c_ad5586264a42819b567898cff66287f6e}\index{font.c@{font.c}!closeFont@{closeFont}}
+\index{closeFont@{closeFont}!font.c@{font.c}}
+\doxysubsubsection{\texorpdfstring{closeFont()}{closeFont()}}
+{\footnotesize\ttfamily \label{font_8c_ad5586264a42819b567898cff66287f6e} 
+void close\+Font (\begin{DoxyParamCaption}\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{}\end{DoxyParamCaption})}
+
+
+
+Closes the font and frees the memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & Pointer to the font to be closed\\
+\hline
+\end{DoxyParams}
+Called at the end of the program to free the memory \Hypertarget{font_8c_afc84e91f89912156cd973a3699f19cc7}\index{font.c@{font.c}!drawInfo@{drawInfo}}
+\index{drawInfo@{drawInfo}!font.c@{font.c}}
+\doxysubsubsection{\texorpdfstring{drawInfo()}{drawInfo()}}
+{\footnotesize\ttfamily \label{font_8c_afc84e91f89912156cd973a3699f19cc7} 
+void draw\+Info (\begin{DoxyParamCaption}\item[{bool}]{up}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{bool}]{big}{}\end{DoxyParamCaption})}
+
+
+
+Draws an info text on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em up} & \\
+\hline
+{\em text} & \\
+\hline
+{\em big} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{font_8c_ac879cc6072d94dd251f0d5124cadc074}\index{font.c@{font.c}!drawScore@{drawScore}}
+\index{drawScore@{drawScore}!font.c@{font.c}}
+\doxysubsubsection{\texorpdfstring{drawScore()}{drawScore()}}
+{\footnotesize\ttfamily \label{font_8c_ac879cc6072d94dd251f0d5124cadc074} 
+void draw\+Score (\begin{DoxyParamCaption}\item[{int}]{score1}{, }\item[{int}]{score2}{}\end{DoxyParamCaption})}
+
+
+
+Draws the game board on the screen. 
+
+\Hypertarget{font_8c_a0e406e917c6e51e7b7579dd4b61e41fe}\index{font.c@{font.c}!drawString@{drawString}}
+\index{drawString@{drawString}!font.c@{font.c}}
+\doxysubsubsection{\texorpdfstring{drawString()}{drawString()}}
+{\footnotesize\ttfamily \label{font_8c_a0e406e917c6e51e7b7579dd4b61e41fe} 
+void draw\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{text}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{int}]{centerX}{, }\item[{int}]{centerY}{}\end{DoxyParamCaption})}
+
+
+
+Draws text on the screen at the desired location. 
+
+Relies on SDL2\+\_\+ttf library to render text 
+\begin{DoxyParams}{Parameters}
+{\em text} & Pointer to the text to be rendered \\
+\hline
+{\em x} & X coordinate of the text \\
+\hline
+{\em y} & Y coordinate of the text \\
+\hline
+{\em font} & Pointer to the font to be used \\
+\hline
+{\em centerX} & If equal to 1, the text will be centered on the x axis \\
+\hline
+{\em centerY} & If equal to 1, the text will be centered on the y axis \\
+\hline
+\end{DoxyParams}
+\Hypertarget{font_8c_a7c73e5779cc80514a1178611fcf026cd}\index{font.c@{font.c}!loadFont@{loadFont}}
+\index{loadFont@{loadFont}!font.c@{font.c}}
+\doxysubsubsection{\texorpdfstring{loadFont()}{loadFont()}}
+{\footnotesize\ttfamily \label{font_8c_a7c73e5779cc80514a1178611fcf026cd} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} load\+Font (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{name}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Loads the font with the specified size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Path of the font \\
+\hline
+{\em size} & Size of the font \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Pointer to the font loaded in SDL format 
+\end{DoxyReturn}

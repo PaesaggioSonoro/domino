@@ -1,0 +1,186 @@
+\doxysection{src/game.h File Reference}
+\hypertarget{game_8h}{}\label{game_8h}\index{src/game.h@{src/game.h}}
+{\ttfamily \#include "{}structs.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{game_8h_a972b7dcc1e4c11960bfb65cc78aa45bf}{CHECK\+\_\+\+INPUTS}}~if(\mbox{\hyperlink{game_8c_aeae2e9860596c962ef3286b079c10db8}{some\+Input}}()) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_ac33a846f180cb0cd7a8c96ca95996e0a}{CHECK\+\_\+\+INPUT\+\_\+\+UP}}~if(input.\+up) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_aa066f880854cc809bbd0f3094c00ef08}{CHECK\+\_\+\+INPUT\+\_\+\+DOWN}}~if(input.\+down) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_a649c73f7af6051630c867cb5c6d41e4a}{CHECK\+\_\+\+INPUT\+\_\+\+LEFT}}~if(input.\+left) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_aa1860d0662d9d6e49916f3832be3b470}{CHECK\+\_\+\+INPUT\+\_\+\+RIGHT}}~if(input.\+right) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_a2a06901437fe2fdb1f6c5817ee05f2bb}{CHECK\+\_\+\+INPUT\+\_\+\+ENTER}}~if(input.\+enter) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\item 
+\#define \mbox{\hyperlink{game_8h_a375cab4de58678e7d72be57441f30324}{CHECK\+\_\+\+INPUT\+\_\+\+ESC}}~if(input.\+esc) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{game_8h_afaa99559abbad31025a7fb1e9daa6d35}{animation\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Utils function to check if something is animating. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a8a54bf62088bc791fcb14390ce41acd5}{animate\+Menu}} (int steps, int wait)
+\begin{DoxyCompactList}\small\item\em Runs the menu animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a118be3de733d4ee8bd3d2817fe914161}{reset\+Menu\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Resets the menu animation data to default values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a25af2e8d0a6a28d929c02edcd1b843ec}{animate\+Card\+Wrong}} (int wait)
+\begin{DoxyCompactList}\small\item\em Animates the card when it\textquotesingle{}s placed in the wrong position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a153dd05f15439d67f65c1162e4412314}{draw\+Cards}} (\mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*}cards)
+\begin{DoxyCompactList}\small\item\em Draws the cards on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_ad85c1dbfb1c50d1e52cac1f0942c862c}{Distribute\+Cards}} ()
+\begin{DoxyCompactList}\small\item\em Shuffles and distributes the cards to the players. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game}{Game}} \mbox{\hyperlink{game_8h_ac6a5ed6191fcf3a5bf0445921feb4f48}{game}}
+\item 
+\mbox{\hyperlink{struct_control}{Control}} \mbox{\hyperlink{game_8h_a46530da1ff98c41f2c1dbd2497488db0}{input}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{game_8h_aa066f880854cc809bbd0f3094c00ef08}\index{game.h@{game.h}!CHECK\_INPUT\_DOWN@{CHECK\_INPUT\_DOWN}}
+\index{CHECK\_INPUT\_DOWN@{CHECK\_INPUT\_DOWN}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_DOWN}{CHECK\_INPUT\_DOWN}}
+{\footnotesize\ttfamily \label{game_8h_aa066f880854cc809bbd0f3094c00ef08} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+DOWN~if(input.\+down) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_a2a06901437fe2fdb1f6c5817ee05f2bb}\index{game.h@{game.h}!CHECK\_INPUT\_ENTER@{CHECK\_INPUT\_ENTER}}
+\index{CHECK\_INPUT\_ENTER@{CHECK\_INPUT\_ENTER}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_ENTER}{CHECK\_INPUT\_ENTER}}
+{\footnotesize\ttfamily \label{game_8h_a2a06901437fe2fdb1f6c5817ee05f2bb} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+ENTER~if(input.\+enter) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_a375cab4de58678e7d72be57441f30324}\index{game.h@{game.h}!CHECK\_INPUT\_ESC@{CHECK\_INPUT\_ESC}}
+\index{CHECK\_INPUT\_ESC@{CHECK\_INPUT\_ESC}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_ESC}{CHECK\_INPUT\_ESC}}
+{\footnotesize\ttfamily \label{game_8h_a375cab4de58678e7d72be57441f30324} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+ESC~if(input.\+esc) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_a649c73f7af6051630c867cb5c6d41e4a}\index{game.h@{game.h}!CHECK\_INPUT\_LEFT@{CHECK\_INPUT\_LEFT}}
+\index{CHECK\_INPUT\_LEFT@{CHECK\_INPUT\_LEFT}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_LEFT}{CHECK\_INPUT\_LEFT}}
+{\footnotesize\ttfamily \label{game_8h_a649c73f7af6051630c867cb5c6d41e4a} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+LEFT~if(input.\+left) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_aa1860d0662d9d6e49916f3832be3b470}\index{game.h@{game.h}!CHECK\_INPUT\_RIGHT@{CHECK\_INPUT\_RIGHT}}
+\index{CHECK\_INPUT\_RIGHT@{CHECK\_INPUT\_RIGHT}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_RIGHT}{CHECK\_INPUT\_RIGHT}}
+{\footnotesize\ttfamily \label{game_8h_aa1860d0662d9d6e49916f3832be3b470} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+RIGHT~if(input.\+right) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_ac33a846f180cb0cd7a8c96ca95996e0a}\index{game.h@{game.h}!CHECK\_INPUT\_UP@{CHECK\_INPUT\_UP}}
+\index{CHECK\_INPUT\_UP@{CHECK\_INPUT\_UP}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUT\_UP}{CHECK\_INPUT\_UP}}
+{\footnotesize\ttfamily \label{game_8h_ac33a846f180cb0cd7a8c96ca95996e0a} 
+\#define CHECK\+\_\+\+INPUT\+\_\+\+UP~if(input.\+up) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+\Hypertarget{game_8h_a972b7dcc1e4c11960bfb65cc78aa45bf}\index{game.h@{game.h}!CHECK\_INPUTS@{CHECK\_INPUTS}}
+\index{CHECK\_INPUTS@{CHECK\_INPUTS}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_INPUTS}{CHECK\_INPUTS}}
+{\footnotesize\ttfamily \label{game_8h_a972b7dcc1e4c11960bfb65cc78aa45bf} 
+\#define CHECK\+\_\+\+INPUTS~if(\mbox{\hyperlink{game_8c_aeae2e9860596c962ef3286b079c10db8}{some\+Input}}()) \mbox{\hyperlink{game_8c_ae238d2d9953da5f7541f07f60e62e28f}{waiting\+Next\+Input}} = true}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8h_a25af2e8d0a6a28d929c02edcd1b843ec}\index{game.h@{game.h}!animateCardWrong@{animateCardWrong}}
+\index{animateCardWrong@{animateCardWrong}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{animateCardWrong()}{animateCardWrong()}}
+{\footnotesize\ttfamily \label{game_8h_a25af2e8d0a6a28d929c02edcd1b843ec} 
+void animate\+Card\+Wrong (\begin{DoxyParamCaption}\item[{int}]{wait}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Animates the card when it\textquotesingle{}s placed in the wrong position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait} & Duration of the animation in frames \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a8a54bf62088bc791fcb14390ce41acd5}\index{game.h@{game.h}!animateMenu@{animateMenu}}
+\index{animateMenu@{animateMenu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{animateMenu()}{animateMenu()}}
+{\footnotesize\ttfamily \label{game_8h_a8a54bf62088bc791fcb14390ce41acd5} 
+void animate\+Menu (\begin{DoxyParamCaption}\item[{int}]{steps}{, }\item[{int}]{wait}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Runs the menu animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em steps} & Number of steps of the animation \\
+\hline
+{\em wait} & Duration of animation in frames \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_afaa99559abbad31025a7fb1e9daa6d35}\index{game.h@{game.h}!animationComplete@{animationComplete}}
+\index{animationComplete@{animationComplete}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{animationComplete()}{animationComplete()}}
+{\footnotesize\ttfamily \label{game_8h_afaa99559abbad31025a7fb1e9daa6d35} 
+bool animation\+Complete (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Utils function to check if something is animating. 
+
+\begin{DoxyReturn}{Returns}
+True if animation running 
+\end{DoxyReturn}
+\Hypertarget{game_8h_ad85c1dbfb1c50d1e52cac1f0942c862c}\index{game.h@{game.h}!DistributeCards@{DistributeCards}}
+\index{DistributeCards@{DistributeCards}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{DistributeCards()}{DistributeCards()}}
+{\footnotesize\ttfamily \label{game_8h_ad85c1dbfb1c50d1e52cac1f0942c862c} 
+void Distribute\+Cards (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Shuffles and distributes the cards to the players. 
+
+Creates the array of randomized card values divided by the number of players \Hypertarget{game_8h_a153dd05f15439d67f65c1162e4412314}\index{game.h@{game.h}!drawCards@{drawCards}}
+\index{drawCards@{drawCards}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{drawCards()}{drawCards()}}
+{\footnotesize\ttfamily \label{game_8h_a153dd05f15439d67f65c1162e4412314} 
+void draw\+Cards (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_card}{Card}} \texorpdfstring{$\ast$}{*}}]{cards}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Draws the cards on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cards} & Array of cards data to draw \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8h_a118be3de733d4ee8bd3d2817fe914161}\index{game.h@{game.h}!resetMenuAnimation@{resetMenuAnimation}}
+\index{resetMenuAnimation@{resetMenuAnimation}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{resetMenuAnimation()}{resetMenuAnimation()}}
+{\footnotesize\ttfamily \label{game_8h_a118be3de733d4ee8bd3d2817fe914161} 
+void reset\+Menu\+Animation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Resets the menu animation data to default values. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{game_8h_ac6a5ed6191fcf3a5bf0445921feb4f48}\index{game.h@{game.h}!game@{game}}
+\index{game@{game}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game}{game}}
+{\footnotesize\ttfamily \label{game_8h_ac6a5ed6191fcf3a5bf0445921feb4f48} 
+\mbox{\hyperlink{struct_game}{Game}} game\hspace{0.3cm}{\ttfamily [extern]}}
+
+\doxylink{struct_game}{Game} struct that contains all the game data \Hypertarget{game_8h_a46530da1ff98c41f2c1dbd2497488db0}\index{game.h@{game.h}!input@{input}}
+\index{input@{input}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily \label{game_8h_a46530da1ff98c41f2c1dbd2497488db0} 
+\mbox{\hyperlink{struct_control}{Control}} input\hspace{0.3cm}{\ttfamily [extern]}}
+
+Struct that holds the input data 

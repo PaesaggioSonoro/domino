@@ -1,0 +1,51 @@
+\doxysection{src/init.c File Reference}
+\hypertarget{init_8c}{}\label{init_8c}\index{src/init.c@{src/init.c}}
+{\ttfamily \#include "{}init.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{init_8c_abc2602023569f58861daf55261766418}{close\+Font}} (TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Closes the font and frees the memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{init_8c_a4625abbd174dfbdfec9f4cf9124217a8}{init}} (char \texorpdfstring{$\ast$}{*}title)
+\begin{DoxyCompactList}\small\item\em Initialization of SDL, TTF, and the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{init_8c_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{init_8c_a4b66d5e31b5dc18b314c8a68163263bd}\index{init.c@{init.c}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!init.c@{init.c}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily \label{init_8c_a4b66d5e31b5dc18b314c8a68163263bd} 
+void cleanup (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{init_8c_abc2602023569f58861daf55261766418}\index{init.c@{init.c}!closeFont@{closeFont}}
+\index{closeFont@{closeFont}!init.c@{init.c}}
+\doxysubsubsection{\texorpdfstring{closeFont()}{closeFont()}}
+{\footnotesize\ttfamily \label{init_8c_abc2602023569f58861daf55261766418} 
+void close\+Font (\begin{DoxyParamCaption}\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{font}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Closes the font and frees the memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & Pointer to the font to be closed\\
+\hline
+\end{DoxyParams}
+Called at the end of the program to free the memory \Hypertarget{init_8c_a4625abbd174dfbdfec9f4cf9124217a8}\index{init.c@{init.c}!init@{init}}
+\index{init@{init}!init.c@{init.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{init_8c_a4625abbd174dfbdfec9f4cf9124217a8} 
+void init (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{title}{}\end{DoxyParamCaption})}
+
+
+
+Initialization of SDL, TTF, and the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & Title of the window \\
+\hline
+\end{DoxyParams}

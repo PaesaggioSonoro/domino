@@ -1,0 +1,216 @@
+\doxysection{src/defs.h File Reference}
+\hypertarget{defs_8h}{}\label{defs_8h}\index{src/defs.h@{src/defs.h}}
+
+
+This file contains the definitions of the game.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+timer.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{defs_8h_a7b3b25cba33b07c303f3060fe41887f6}{BLACK}}~0x00, 0x00, 0x00, 0x\+FF
+\item 
+\#define \mbox{\hyperlink{defs_8h_a8d23feea868a983c8c2b661e1e16972f}{RED}}~0x\+FF, 0x00, 0x00, 0x\+FF
+\item 
+\Hypertarget{defs_8h_a2cd109632a6dcccaa80b43561b1ab700}\label{defs_8h_a2cd109632a6dcccaa80b43561b1ab700} 
+\#define {\bfseries SCREEN\+\_\+\+WIDTH}~1250
+\begin{DoxyCompactList}\small\item\em Width of the screen. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a6974d08a74da681b3957b2fead2608b8}\label{defs_8h_a6974d08a74da681b3957b2fead2608b8} 
+\#define {\bfseries SCREEN\+\_\+\+HEIGHT}~600
+\begin{DoxyCompactList}\small\item\em Height of the screen. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a1112bc16f788ef03ff4165abfa648d28}\label{defs_8h_a1112bc16f788ef03ff4165abfa648d28} 
+\#define {\bfseries CARD\+\_\+\+HEIGHT}~40
+\begin{DoxyCompactList}\small\item\em Height of the single card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_ad6ff324701f28fdcd04a8408f68a3f6c}\label{defs_8h_ad6ff324701f28fdcd04a8408f68a3f6c} 
+\#define {\bfseries CARD\+\_\+\+WIDTH}~(2 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{defs_8h_a1112bc16f788ef03ff4165abfa648d28}{CARD\+\_\+\+HEIGHT}})
+\begin{DoxyCompactList}\small\item\em Width of the single card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a132cb60972f6539c94946ffd7eb8f33d}\label{defs_8h_a132cb60972f6539c94946ffd7eb8f33d} 
+\#define {\bfseries CARD\+\_\+\+BORDER}~3
+\begin{DoxyCompactList}\small\item\em Pixels of border of the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a5871ddb231219187954d2777f348a538}\label{defs_8h_a5871ddb231219187954d2777f348a538} 
+\#define {\bfseries CARD\+\_\+\+INTERNAL\+\_\+\+PADDING}~(\mbox{\hyperlink{defs_8h_a1112bc16f788ef03ff4165abfa648d28}{CARD\+\_\+\+HEIGHT}}/10)
+\begin{DoxyCompactList}\small\item\em Padding between the card and the circles. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_abd68f86e46715b703d841dd5ae2a8a7d}\label{defs_8h_abd68f86e46715b703d841dd5ae2a8a7d} 
+\#define {\bfseries CARD\+\_\+\+CIRCLE\+\_\+\+RADIUS}~(\mbox{\hyperlink{defs_8h_a1112bc16f788ef03ff4165abfa648d28}{CARD\+\_\+\+HEIGHT}}/10)
+\begin{DoxyCompactList}\small\item\em Radius of the circles inside the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a2e91614bbf047944058080feaceb0ee0}\label{defs_8h_a2e91614bbf047944058080feaceb0ee0} 
+\#define {\bfseries CARD\+\_\+\+SPACER\+\_\+\+SIZE}~1
+\begin{DoxyCompactList}\small\item\em Size of the spacer between the circles inside the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_af36e299086c79060c75a441a639faffe}\label{defs_8h_af36e299086c79060c75a441a639faffe} 
+\#define {\bfseries CARD\+\_\+\+SPACER\+\_\+\+PADDING}~6
+\begin{DoxyCompactList}\small\item\em Padding between the spacer and the circles inside the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a998a6200bf41d8681785777074f45bc7}\label{defs_8h_a998a6200bf41d8681785777074f45bc7} 
+\#define {\bfseries CARDS\+\_\+\+SPACE\+\_\+\+BETWEEN}~10
+\begin{DoxyCompactList}\small\item\em Space between a card and the next one. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a0518014a54a37bbb029e49f925e89b3c}\label{defs_8h_a0518014a54a37bbb029e49f925e89b3c} 
+\#define {\bfseries CARD\+\_\+\+SELECTED\+\_\+\+BORDER}~5
+\begin{DoxyCompactList}\small\item\em Size of border if card selected. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a1324d62c3cd062ddc88ca7819d8a686c}\label{defs_8h_a1324d62c3cd062ddc88ca7819d8a686c} 
+\#define {\bfseries CARD\+\_\+\+SELECTED\+\_\+\+BORDER\+\_\+\+PADDING}~2
+\begin{DoxyCompactList}\small\item\em Padding of the border if card selected. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a0853e352c71a71eb7755f8117c697fb1}\label{defs_8h_a0853e352c71a71eb7755f8117c697fb1} 
+\#define {\bfseries CARD\+\_\+\+COLOR}~0x\+FE, 0x\+ED, 0x\+D0, 0x\+FF
+\begin{DoxyCompactList}\small\item\em Background color of the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a51c0fb001c1a623f92fee9c59df0562e}\label{defs_8h_a51c0fb001c1a623f92fee9c59df0562e} 
+\#define {\bfseries CIRCLE\+\_\+\+COLOR}~\mbox{\hyperlink{defs_8h_a7b3b25cba33b07c303f3060fe41887f6}{BLACK}}
+\begin{DoxyCompactList}\small\item\em Color of the circles inside the card. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a1008be02757e683602ec36799eecf848}\label{defs_8h_a1008be02757e683602ec36799eecf848} 
+\#define {\bfseries CARD\+\_\+\+BORDER\+\_\+\+COLOR}~0x89, 0x84, 0x5B, 0x\+FF
+\item 
+\Hypertarget{defs_8h_af864c09fcd0134ac9cae314e6f48be2b}\label{defs_8h_af864c09fcd0134ac9cae314e6f48be2b} 
+\#define {\bfseries CARD\+\_\+\+BORDER\+\_\+\+COLOR\+\_\+\+SELECTED}~\mbox{\hyperlink{defs_8h_a8d23feea868a983c8c2b661e1e16972f}{RED}}
+\item 
+\Hypertarget{defs_8h_aed566f68945d4fe78d1f306f3580958d}\label{defs_8h_aed566f68945d4fe78d1f306f3580958d} 
+\#define {\bfseries CARD\+\_\+\+SPACER\+\_\+\+COLOR}~\mbox{\hyperlink{defs_8h_a7b3b25cba33b07c303f3060fe41887f6}{BLACK}}
+\item 
+\Hypertarget{defs_8h_a8d9eef35ebd24b4aed8387f58697a596}\label{defs_8h_a8d9eef35ebd24b4aed8387f58697a596} 
+\#define {\bfseries MENU\+\_\+\+IMAGES\+\_\+\+SIZE}~1.\+0
+\item 
+\Hypertarget{defs_8h_a65d63bbd85129a085fb78a9a59cb4e50}\label{defs_8h_a65d63bbd85129a085fb78a9a59cb4e50} 
+\#define {\bfseries N\+\_\+\+CARDS}~8
+\begin{DoxyCompactList}\small\item\em Number of cards in the game for every player. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a89b8089c3ffedc5dbcce5e43ea41e25a}\label{defs_8h_a89b8089c3ffedc5dbcce5e43ea41e25a} 
+\#define {\bfseries AI\+\_\+\+THINK\+\_\+\+TIME}~20
+\begin{DoxyCompactList}\small\item\em Delay between each AI move. \end{DoxyCompactList}\item 
+\Hypertarget{defs_8h_a8e7073b49c42e0a9a52513152952c964}\label{defs_8h_a8e7073b49c42e0a9a52513152952c964} 
+\#define {\bfseries CARD\+\_\+\+CIRCLES\+\_\+\+AREA}~(\mbox{\hyperlink{defs_8h_a1112bc16f788ef03ff4165abfa648d28}{CARD\+\_\+\+HEIGHT}} -\/ 2 \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{defs_8h_a5871ddb231219187954d2777f348a538}{CARD\+\_\+\+INTERNAL\+\_\+\+PADDING}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{Game\+Status}} \{ \newline
+\mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a81b5e33de86234bc241b9e1f5fbdb6bd}{Game\+Status\+\_\+\+NULL}}
+, \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a2bf35e569dfed6559c9de5ad393f8666}{Game\+Status\+\_\+\+MENU}}
+, \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1af8d29f09b456868ce5e3d148dd690920}{Game\+Status\+\_\+\+PLAYING}}
+, \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1a9f25fd0d061d5c972fb4287c28671b5b}{Game\+Status\+\_\+\+GAMEOVER}}
+, \newline
+\mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1af90879da79da1d7f82ea18f1338d9b89}{Game\+Status\+\_\+\+ANIMATING}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for the game status. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{Game\+Mode}} \{ \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589dea9684c0d0837eea8b3aca17e15f7b4013}{Game\+Mode\+\_\+\+SINGLE\+\_\+\+PLAYER}}
+, \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589deac03ae1cdd7c1bb44eba665c2b2713273}{Game\+Mode\+\_\+\+WITH\+\_\+\+AI}}
+, \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589deaccc2655d1d0d2d1b2cf1736e08f85629}{Game\+Mode\+\_\+\+NULL}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for the game mode. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{Card\+Position}} \{ \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a3c6606ab6a0809caf59c73901751195d}{Card\+Position\+\_\+\+TABLE}}
+, \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a9df11ef7e750c0842af3830d42b7edfb}{Card\+Position\+\_\+\+HAND}}
+, \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40af5cf6a2275a2d9d3bf7041101170f74e}{Card\+Position\+\_\+\+ChoosingR}}
+, \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40a19082ff4c40ea882c634fcf653a13112}{Card\+Position\+\_\+\+ChoosingL}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for the card position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definitions of the game. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{defs_8h_a7b3b25cba33b07c303f3060fe41887f6}\index{defs.h@{defs.h}!BLACK@{BLACK}}
+\index{BLACK@{BLACK}!defs.h@{defs.h}}
+\doxysubsubsection{\texorpdfstring{BLACK}{BLACK}}
+{\footnotesize\ttfamily \label{defs_8h_a7b3b25cba33b07c303f3060fe41887f6} 
+\#define BLACK~0x00, 0x00, 0x00, 0x\+FF}
+
+RGB Color Black \Hypertarget{defs_8h_a8d23feea868a983c8c2b661e1e16972f}\index{defs.h@{defs.h}!RED@{RED}}
+\index{RED@{RED}!defs.h@{defs.h}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{defs_8h_a8d23feea868a983c8c2b661e1e16972f} 
+\#define RED~0x\+FF, 0x00, 0x00, 0x\+FF}
+
+RGB Color Red 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{defs_8h_aeddd0ddedcf764db751e2c7828929c40}\index{defs.h@{defs.h}!CardPosition@{CardPosition}}
+\index{CardPosition@{CardPosition}!defs.h@{defs.h}}
+\doxysubsubsection{\texorpdfstring{CardPosition}{CardPosition}}
+{\footnotesize\ttfamily \label{defs_8h_aeddd0ddedcf764db751e2c7828929c40} 
+enum \mbox{\hyperlink{defs_8h_aeddd0ddedcf764db751e2c7828929c40}{Card\+Position}}}
+
+
+
+Enum for the card position. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CardPosition\_TABLE@{CardPosition\_TABLE}!defs.h@{defs.h}}\index{defs.h@{defs.h}!CardPosition\_TABLE@{CardPosition\_TABLE}}}\Hypertarget{defs_8h_aeddd0ddedcf764db751e2c7828929c40a3c6606ab6a0809caf59c73901751195d}\label{defs_8h_aeddd0ddedcf764db751e2c7828929c40} 
+Card\+Position\+\_\+\+TABLE&card is on the table \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CardPosition\_HAND@{CardPosition\_HAND}!defs.h@{defs.h}}\index{defs.h@{defs.h}!CardPosition\_HAND@{CardPosition\_HAND}}}\Hypertarget{defs_8h_aeddd0ddedcf764db751e2c7828929c40a9df11ef7e750c0842af3830d42b7edfb}\label{defs_8h_aeddd0ddedcf764db751e2c7828929c40} 
+Card\+Position\+\_\+\+HAND&card is in the player\textquotesingle{}s hand \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CardPosition\_ChoosingR@{CardPosition\_ChoosingR}!defs.h@{defs.h}}\index{defs.h@{defs.h}!CardPosition\_ChoosingR@{CardPosition\_ChoosingR}}}\Hypertarget{defs_8h_aeddd0ddedcf764db751e2c7828929c40af5cf6a2275a2d9d3bf7041101170f74e}\label{defs_8h_aeddd0ddedcf764db751e2c7828929c40} 
+Card\+Position\+\_\+\+ChoosingR&card is being placed by the player on the right side of the table (but still not placed) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CardPosition\_ChoosingL@{CardPosition\_ChoosingL}!defs.h@{defs.h}}\index{defs.h@{defs.h}!CardPosition\_ChoosingL@{CardPosition\_ChoosingL}}}\Hypertarget{defs_8h_aeddd0ddedcf764db751e2c7828929c40a19082ff4c40ea882c634fcf653a13112}\label{defs_8h_aeddd0ddedcf764db751e2c7828929c40} 
+Card\+Position\+\_\+\+ChoosingL&card is being chosen by the player on the left side of the table (but still not placed) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{defs_8h_aaf5ef5a17b53e9997c837b07015589de}\index{defs.h@{defs.h}!GameMode@{GameMode}}
+\index{GameMode@{GameMode}!defs.h@{defs.h}}
+\doxysubsubsection{\texorpdfstring{GameMode}{GameMode}}
+{\footnotesize\ttfamily \label{defs_8h_aaf5ef5a17b53e9997c837b07015589de} 
+enum \mbox{\hyperlink{defs_8h_aaf5ef5a17b53e9997c837b07015589de}{Game\+Mode}}}
+
+
+
+Enum for the game mode. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameMode\_SINGLE\_PLAYER@{GameMode\_SINGLE\_PLAYER}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameMode\_SINGLE\_PLAYER@{GameMode\_SINGLE\_PLAYER}}}\Hypertarget{defs_8h_aaf5ef5a17b53e9997c837b07015589dea9684c0d0837eea8b3aca17e15f7b4013}\label{defs_8h_aaf5ef5a17b53e9997c837b07015589de} 
+Game\+Mode\+\_\+\+SINGLE\+\_\+\+PLAYER&single player mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameMode\_WITH\_AI@{GameMode\_WITH\_AI}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameMode\_WITH\_AI@{GameMode\_WITH\_AI}}}\Hypertarget{defs_8h_aaf5ef5a17b53e9997c837b07015589deac03ae1cdd7c1bb44eba665c2b2713273}\label{defs_8h_aaf5ef5a17b53e9997c837b07015589de} 
+Game\+Mode\+\_\+\+WITH\+\_\+\+AI&player vs AI mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameMode\_NULL@{GameMode\_NULL}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameMode\_NULL@{GameMode\_NULL}}}\Hypertarget{defs_8h_aaf5ef5a17b53e9997c837b07015589deaccc2655d1d0d2d1b2cf1736e08f85629}\label{defs_8h_aaf5ef5a17b53e9997c837b07015589de} 
+Game\+Mode\+\_\+\+NULL&enum is not initialized (i.\+e. menu) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1}\index{defs.h@{defs.h}!GameStatus@{GameStatus}}
+\index{GameStatus@{GameStatus}!defs.h@{defs.h}}
+\doxysubsubsection{\texorpdfstring{GameStatus}{GameStatus}}
+{\footnotesize\ttfamily \label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+enum \mbox{\hyperlink{defs_8h_a881b49e3802366255ad852f1c8624fd1}{Game\+Status}}}
+
+
+
+Enum for the game status. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameStatus\_NULL@{GameStatus\_NULL}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameStatus\_NULL@{GameStatus\_NULL}}}\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1a81b5e33de86234bc241b9e1f5fbdb6bd}\label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+Game\+Status\+\_\+\+NULL&enum is not initialized \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameStatus\_MENU@{GameStatus\_MENU}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameStatus\_MENU@{GameStatus\_MENU}}}\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1a2bf35e569dfed6559c9de5ad393f8666}\label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+Game\+Status\+\_\+\+MENU&game is in the menu \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameStatus\_PLAYING@{GameStatus\_PLAYING}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameStatus\_PLAYING@{GameStatus\_PLAYING}}}\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1af8d29f09b456868ce5e3d148dd690920}\label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+Game\+Status\+\_\+\+PLAYING&game is playing \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameStatus\_GAMEOVER@{GameStatus\_GAMEOVER}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameStatus\_GAMEOVER@{GameStatus\_GAMEOVER}}}\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1a9f25fd0d061d5c972fb4287c28671b5b}\label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+Game\+Status\+\_\+\+GAMEOVER&game is over, player can restart and will go back to the menu \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameStatus\_ANIMATING@{GameStatus\_ANIMATING}!defs.h@{defs.h}}\index{defs.h@{defs.h}!GameStatus\_ANIMATING@{GameStatus\_ANIMATING}}}\Hypertarget{defs_8h_a881b49e3802366255ad852f1c8624fd1af90879da79da1d7f82ea18f1338d9b89}\label{defs_8h_a881b49e3802366255ad852f1c8624fd1} 
+Game\+Status\+\_\+\+ANIMATING&game is doing some animations and will go back to Game\+Status\+\_\+\+PLAYING when done \\
+\hline
+
+\end{DoxyEnumFields}
