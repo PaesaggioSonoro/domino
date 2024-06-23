@@ -6,6 +6,11 @@ Componenti del gruppo:
 - [Luca Colussi](https://moodle.unive.it/user/view.php?id=110176&course=15112)
 - [Nicola Alberti](https://moodle.unive.it/user/view.php?id=110412&course=15112)
 
+## Divisione dei ruoli nel gruppo
+- Francesco Zanus-Fortes: implementazione della logica di gioco generale e dell'IA, gestione teorica della grafica, makefile, testing e debugging
+- Niccolò Busetto: implementazione della grafica high level e delle funzioni di input, testing e debugging
+- Luca Colussi e Nicola Alberti: implementazione delle funzioni di inizializzazione e disegno low level, font, immagini e animazioni, testing e debugging
+
 Il progetto è stato realizzato utilizzando la libreria grafica [SDL2](https://www.libsdl.org/) e il compilatore [MinGW](https://www.mingw-w64.org/). In questa versione del gioco è possibile giocare in due modalità:
 - **Single Player**: il giocatore piazza le tessere fino a quando sono disponibili combinazioni valide. Non è prevista vittoria o sconfitta e viene comunicato il punteggio finale.
 - **With AI**: il giocatore si scontrerà contro il computer fino a quando uno dei due giocatori non potrà piazzare più tessere. Verrà comunicato il vincitore e il punteggio finale.
@@ -43,6 +48,13 @@ Il progetto è stato diviso in più file per una maggiore leggibilità e manuten
 
 ## Algoritmo di IA
 L'algoritmo di IA sceglie tra tutte le tessere posizionabili quella che massimizza il punteggio. Il punteggio di una tessera è calcolato come la somma dei punteggi delle combinazioni che la tessera forma con le tessere già posizionate. 
+
+## Compilazione
+Il gioco può essere compilato e eseguito solo su piattaforma Windows a causa della complessità nella compilazione
+della libreria grafica SDL che al suo interno presenta file binari precompilati per Windows. Per poter gestire la compilazione per 
+altri sistemi operativi sarebbe stato necessario gestire separate librerie con file binari precompilati per 
+ogni sistema operativo. La libreria inoltre è stata unita a SDL_image e SDL_ttf per poter gestire immagini e testo, tali espansioni
+presentano limitate documentazioni rendendo difficile la compilazione per altri sistemi.
 
 ## Risorse esterne
 - Font: [Arcade Ya](https://www.dafont.com/it/arcade-ya.font) di Gaut Fonts
